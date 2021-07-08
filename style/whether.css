@@ -1,0 +1,175 @@
+:root{
+   --logo:rgb(4, 238, 4);
+   --background: #000;
+   --color: #fff;
+   --color1:#ccc;
+   --color2: #333333;
+   --color3: #f0f0f065;
+   --color4:#928f88;
+   --color5: #444349;
+   --font:'Roboto Condensed', sans-serif;
+   --shado :0 4px 16px rgb(0 0 0 / 10%);
+}
+.whether_container{
+   margin-top:100px;
+}
+.whether_container .info_logo{
+   justify-content: space-around;
+}
+.whether_container .info_logo a{
+   font-family: var(--font); 
+   font-size:22px;
+   color: var(--color2);
+   font-weight:700;
+   display:flex;
+   align-items:center;
+}
+.whether_container .info_logo a .fa{
+   color: var(--logo);
+   font-size:35px;
+}
+.whether_container .current_time h3{
+   color:var(--color5);
+   padding-top:10px;
+   font-family: var(--font); 
+   font-weight:700;
+   text-transform:capitalize;
+}
+.whether_container .current_time h4{
+   color:var(--color2);
+   font-family: 'Roboto Condensed', sans-serif; 
+   font-weight:700;
+   text-transform:capitalize;
+}
+.info{
+   margin-top: 10px;
+   justify-content:space-around;
+   flex-wrap: wrap;
+   align-items:center;
+   text-align:center;
+}
+/* =======X==Nav==X======== */
+
+/* =========Current Whether Data============= */
+.current_temprature{
+  justify-content: center;
+  align-items: center;
+}
+.current_temprature img{
+  width: 100px;
+  height: 100px;
+}
+.current_temprature h1{
+  color:var(--logo);
+  font-family: var(--font); 
+  font-size:70px;
+}
+.current_info h2{
+   color:var(--color4);
+  font-family: var(--font); 
+  text-transform:capitalize;
+  font-weight: 700;
+  text-align:center;
+}
+.current_info p{
+   color:var(--color2);
+   font-family: var(--font); 
+   text-transform:capitalize;
+   font-weight: 700;
+   text-align:center;
+}
+.current_info p span{
+   text-transform:uppercase;
+}
+.info_whether{
+  flex-direction:column;
+  justify-content:center;
+  color: var(--color2);
+  align-items:center;
+}
+.info_whether ul{
+  flex-wrap: wrap;
+  justify-content:center;
+  align-items:center;
+}
+.info_whether ul li{
+  padding:0px 10px;
+  text-transform:capitalize;
+  font-family: var(--font); 
+  font-weight:700;
+  font-size:20px;
+}
+.info_whether ul li span{
+  padding:0px 10px;
+  text-transform:lowercase;
+}
+/* =========X==Current Whether Data==X============= */
+
+/* ===========Daily Wheter Data============== */
+.heading_whether{
+  margin-top:30px;
+}
+.heading_whether h2{
+  text-align:center;
+  color: var(--logo);
+  font-family:var(--font);
+  text-transform:uppercase;
+  font-weight:700;
+}
+.daily_whether {
+  margin: 10px;
+  color: var(--color2);
+  text-align:center;
+  background-color: var(--color);
+  box-shadow: var(--shado);
+  padding:20px 30px;
+  border-radius:10px;
+  font-family: var(--font); 
+  font-weight:700;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+}
+.daily_whether h2{
+   color: var(--logo);
+}
+.daily_whether p{
+  text-transform:capitalize;
+}
+.daily_whether:hover{
+  background-color: var(--color4);
+  color: var(--color);
+}
+.daily_whether_body ul {
+  text-align: center;
+}
+.daily_whether_body ul li{
+  text-transform:capitalize;
+}
+.daily_whether_body ul li span{
+  text-transform:lowercase;
+  padding:0px 10px;
+}
+#daily{
+  justify-content:space-evenly;
+  align-items:center;
+  margin-top: 30px;
+}
+
+/* =====X==Daily Whether Data==X========== */
+
+/* =============Responsive Ness================= */
+@media(max-width:900px){
+   .whether_container{
+      margin-top:160px;
+   }
+}
+@media(max-width:648px){
+   .whether_container{
+      margin-top:80px;
+   }
+}
+@media (max-width: 425px) {
+   .current_temprature h1{
+      font-size:50px;
+   }
+}
