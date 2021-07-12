@@ -1,9 +1,5 @@
 <?php
     include 'includes/navigation_bar.php';
-    
-    if(!isset($_SESSION['USER_LOGIN'])){
-        header('Location:login.php?type=msg&page=About');
-    }
 ?>
 <!-- Whether Body -->
         <div class="whether_container">
@@ -48,3 +44,5 @@
 <?php
     include 'includes/footer.php';
 ?>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+ <script type="text/javascript" src="js/whether.js"></script>

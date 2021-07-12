@@ -9,29 +9,33 @@ $curArr=explode('/',$curStr);
 $cur_path=$curArr[count($curArr)-1];
 
 if(!isset($_SESSION['ADMIN_LOGIN'])){
-	redirect('admin_login.php');
+	redirect('admin_login');
 }
 $page_title='';
-if($cur_path=='' || $cur_path=='index.php'){
+if($cur_path=='' || $cur_path=='index'){
 	$page_title='Dashboard';
-}elseif($cur_path=='category.php' || $cur_path=='manage_category.php'){
+}elseif($cur_path=='category' || $cur_path=='manage_category'){
 	$page_title='Manage Category';
-}elseif($cur_path=='sub_category.php' || $cur_path=='manage_sub_category.php'){
+}elseif($cur_path=='sub_category' || $cur_path=='manage_sub_category'){
 	$page_title='Manage Sub Category';
-}elseif($cur_path=='user.php' || $cur_path=='manage_user.php'){
+}elseif($cur_path=='user' || $cur_path=='manage_user'){
 	$page_title='Manage User';
-}elseif($cur_path=='vendores.php' || $cur_path=='manage_vendores.php'){
+}elseif($cur_path=='vendores' || $cur_path=='manage_vendores'){
 	$page_title='Manage Vendore';
-}elseif($cur_path=='delivery_boy.php' || $cur_path=='manage_delivery_boy.php'){
+}elseif($cur_path=='delivery_boy' || $cur_path=='manage_delivery_boy'){
 	$page_title='Manage Delivery Boy';
-}elseif($cur_path=='coupon_code.php' || $cur_path=='manage_coupon_code.php'){
+}elseif($cur_path=='coupon_code' || $cur_path=='manage_coupon_code'){
 	$page_title='Manage Coupon Code';
-}elseif($cur_path=='product.php' || $cur_path=='manage_product.php'){
+}elseif($cur_path=='product' || $cur_path=='manage_product'){
 	$page_title='Manage Product';
-}elseif($cur_path=='banner.php' || $cur_path=='manage_banner.php'){
+}elseif($cur_path=='banner' || $cur_path=='manage_banner'){
 	$page_title='Manage Banner';
-}elseif($cur_path=='contact_us.php'){
+}elseif($cur_path=='contact_us'){
 	$page_title='Contact Us';
+}elseif($cur_path=='about_us' || $cur_path=='manage_about_us'){
+	$page_title='About Us';
+}elseif($cur_path=='orders' || $cur_path=='order_detailes'){
+	$page_title='Orders';
 }
 
 
@@ -68,18 +72,18 @@ if($cur_path=='' || $cur_path=='index.php'){
           
         </ul>
         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo" href="index.php"></a>
-          <a class="navbar-brand brand-logo-mini" href="index.php"></a>
+          <a class="navbar-brand brand-logo" href="index"></a>
+          <a class="navbar-brand brand-logo-mini" href="index"></a>
         </div>
         <ul class="navbar-nav navbar-nav-right">
           
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-              <span class="nav-profile-name"><?php echo $_SESSION['ADMIN_NAME']?></span>
+              <span class="nav-profile-name">Welcome ! <?php echo $_SESSION['ADMIN_NAME']?></span>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="logout.php">
+              <a class="dropdown-item" href="logout">
                 <i class="mdi mdi-logout text-primary"></i>
                 Logout
               </a>
@@ -101,71 +105,98 @@ if($cur_path=='' || $cur_path=='index.php'){
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
+        <?php if($_SESSION['ADMIN_ROLE']!='0'){ ?>
           <li class="nav-item">
-            <a class="nav-link" href="index.php">
+            <a class="nav-link" href="index">
               <i class="mdi mdi-view-quilt menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+          <?php } ?>
           <li class="nav-item">
-            <a class="nav-link" href="category.php">
+            <a class="nav-link" href="product">
+              <i class="mdi mdi-view-headline menu-icon"></i>
+              <span class="menu-title">Product</span>
+            </a>
+          </li>
+          <?php if($_SESSION['ADMIN_ROLE']=='0'){ ?>
+          <li class="nav-item">
+            <a class="nav-link" href="orders_vendor">
+              <i class="mdi mdi-view-headline menu-icon"></i>
+              <span class="menu-title">Orders</span>
+            </a>
+          </li>
+            <?php }else{ ?>
+          <li class="nav-item">
+            <a class="nav-link" href="orders">
+              <i class="mdi mdi-view-headline menu-icon"></i>
+              <span class="menu-title">Orders</span>
+            </a>
+          </li>
+          <?php } ?>
+          <?php if($_SESSION['ADMIN_ROLE']!='0'){ ?>
+          
+          <li class="nav-item">
+            <a class="nav-link" href="category">
               <i class="mdi mdi-view-headline menu-icon"></i>
               <span class="menu-title">Category</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="sub_category.php">
+            <a class="nav-link" href="sub_category">
               <i class="mdi mdi-view-headline menu-icon"></i>
               <span class="menu-title">Sub Category</span>
             </a>
           </li>
 		      <li class="nav-item">
-            <a class="nav-link" href="user.php">
+            <a class="nav-link" href="user">
               <i class="mdi mdi-view-headline menu-icon "></i>
               <span class="menu-title">Users</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="vendores.php">
+            <a class="nav-link" href="vendores">
               <i class="mdi mdi-view-headline menu-icon "></i>
               <span class="menu-title">Vendors</span>
             </a>
           </li>
 		      <li class="nav-item">
-            <a class="nav-link" href="delivery_boy.php">
+            <a class="nav-link" href="delivery_boy">
               <i class="mdi mdi-view-headline menu-icon"></i>
               <span class="menu-title">Delivery Boy</span>
             </a>
           </li>
 		      <li class="nav-item">
-            <a class="nav-link" href="coupon_code.php">
+            <a class="nav-link" href="coupon_code">
               <i class="mdi mdi-view-headline menu-icon"></i>
               <span class="menu-title">Coupon Code</span>
             </a>
           </li>
 		  
-		      <li class="nav-item">
-            <a class="nav-link" href="product.php">
-              <i class="mdi mdi-view-headline menu-icon"></i>
-              <span class="menu-title">Product</span>
-            </a>
-          </li>
+		     
 		  
 		      <li class="nav-item">
-            <a class="nav-link" href="banner.php">
+            <a class="nav-link" href="banner">
               <i class="mdi mdi-view-headline menu-icon"></i>
               <span class="menu-title">Banner</span>
             </a>
           </li>
 		  
 		      <li class="nav-item">
-            <a class="nav-link" href="contact_us.php">
+            <a class="nav-link" href="contact_us">
               <i class="mdi mdi-view-headline menu-icon"></i>
               <span class="menu-title">Contact Us</span>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="about_us">
+              <i class="mdi mdi-view-headline menu-icon"></i>
+              <span class="menu-title">About Us</span>
+            </a>
+          </li>
 		  
-          
+          <?php } ?>
         </ul>
       </nav>
       <!-- partial -->

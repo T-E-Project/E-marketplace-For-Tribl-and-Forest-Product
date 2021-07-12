@@ -12,19 +12,21 @@
         $email = mysqli_escape_string($con,$_POST['email']);
         $username = mysqli_escape_string($con,$_POST['username']);
         $password = mysqli_escape_string($con,$_POST['password']);
+        $password = md5($password);
 
         $check = mysqli_query($con,"SELECT * FROM users WHERE email='$email'");
 
         if(mysqli_num_rows($check)>0){
             $msg = "<div class='alert' role='alert'>
-                        You Are Alrady Register Please <a href='login.php'> LOGIN NOW </a>
+                        You Are Alrady Register Please <a href='login'> LOGIN NOW </a>
                     </div>";
         }else{
-            mysqli_query($con,"INSERT INTO users (name,email,username,password,status) VALUES(' $name','$email',' $username','$password','0')");
+            mysqli_query($con,"INSERT INTO users (name,email,username,password,status,email_verification) VALUES(' $name','$email',' $username','$password','1','0')");
             $id = mysqli_insert_id($con);
-            $html=WEBSITE_PATH."verify.php?id=".$id;
+            mysqli_query($con,"INSERT INTO user_profile(user_id) VALUES('$id')");
+            $html=WEBSITE_PATH."verify?id=".$id;
             $email_msg ='Please Wait...';
-            send_email($email,$html,'Verify your emain id');
+            send_email($email,$html,'Verify Email Id');
             echo "<script>
                     alert('Thank you for register. Please check your email id, to verify your account');
                 </script>";
@@ -64,7 +66,7 @@
                     </div>
                     <div class="form-input d-flex align-items-center flex-wrap">
                         <button type="submit" name="signup">Signup Now</button>
-                        <p>You are Alrady Signup,Please <a href="<?php echo WEBSITE_PATH; ?>login.php">Login Here</a>.</p>
+                        <p>You are Alrady Signup,Please <a href="<?php echo WEBSITE_PATH; ?>login">Login Here</a>.</p>
                     </div>
                 </form>
             </div>

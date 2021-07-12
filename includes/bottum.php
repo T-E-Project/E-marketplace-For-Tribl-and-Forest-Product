@@ -1,4 +1,4 @@
-<body>
+
     <!-- Boostrap CDN -->
         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
@@ -7,9 +7,7 @@
     <!--X- Boostrap CDN -X-->
 
     <!-- External Java Script File -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
         <script type="text/javascript" src="js/script.js"></script>
-        <script type="text/javascript" src="js/whether.js"></script>
     <!--X- External Java Script File -X-->
 </body>
 </html>

@@ -1,14 +1,35 @@
 <?php
     include 'includes/navigation_bar.php';
+    $id='';
+    $user_id='';
     $msg ='';
-    if(!isset($_SESSION['USER_LOGIN'])){
-        header('Location:login.php?type=msg&page=ProductDetailes');
-    }
 
     if(isset($_GET['id']) && $_GET['id']>0){
         $id = mysqli_escape_string($con,$_GET['id']);
+        $user_id = $_SESSION['USER_ID'];
         $sql = mysqli_query($con,"SELECT * FROM product WHERE id = '$id'");
-       $res =mysqli_fetch_assoc($sql);
+        $res =mysqli_fetch_assoc($sql);
+       if(isset($_GET['type'])=='cart'){
+            $sql = mysqli_query($con,"SELECT * FROM product WHERE id = '$id'");
+            $res =mysqli_fetch_assoc($sql);
+            $cart_check = mysqli_query($con,"SELECT * FROM user_cart WHERE user_id='$user_id' AND product_id='$id'");
+            if(!isset($_SESSION['USER_LOGIN'])){
+                header('Location:login?type=msg&page=Add to Cart');
+            }else{
+                if(mysqli_num_rows($cart_check)>0){
+                    echo "<script>
+                            alert(`Your Selected Product Alrady Cart, Please Check your Cart Detailes.`);
+                        </script>";
+                    redirect('shop');
+                }else{
+                    mysqli_query($con,"INSERT INTO user_cart(user_id,product_id,qty) VALUES('$user_id','$id','1')");
+                    echo "<script>
+                            alert(`Congratulation ! your product successfully Added to cart`);
+                        </script>";
+                    redirect('shop'); 
+                }
+            }
+       }
     }
 ?>
 
@@ -94,8 +115,8 @@
             </div>
             <div class="row mt-3 product_de_slider">
                 <?php
-                    $sub_category_id = $res['sub_category_id'];
-                    $sql_recent= mysqli_query($con,"SELECT * FROM product WHERE status='1' AND sub_category_id='$sub_category_id'");
+                    $sub_category_id = $res['category_id'];
+                    $sql_recent= mysqli_query($con,"SELECT * FROM product WHERE status='1' AND category_id='$sub_category_id'");
                     if(mysqli_num_rows($sql_recent)>1){
                     while ($row_recent = mysqli_fetch_array($sql_recent)){
                 ?>
@@ -124,14 +145,14 @@
                                     <i class="fa fa-star" aria-hidden="true"></i>
                                 </li>
                             </ul>
-                            <a href="<?php echo WEBSITE_PATH; ?>shop.php"><button class="btn">Shop Now</button></a>
+                            <a href="<?php echo WEBSITE_PATH; ?>shop"><button class="btn">Shop Now</button></a>
                         </div>
                 </div>
                 <?php } ?>
                 <?php }else{
                    $msg ="No Related Product Found !";
                 } ?>
-             </div>
+            </div>
              <h6 class="text-danger text-capitalize"><?php echo $msg?></h6>
         <!-- Our Story -->
     </div>

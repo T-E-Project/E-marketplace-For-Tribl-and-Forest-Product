@@ -1,5 +1,12 @@
 <?php 
 include('top.php');
+$condition ='';
+$condition1 ='';
+if($_SESSION['ADMIN_ROLE']=='0'){
+	$condition=" and product.added_by='".$_SESSION['ADMIN_ID']."'" ;
+	$condition1=" and added_by='".$_SESSION['ADMIN_ID']."'" ;
+}
+
 $oldImage ='';
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id']>0){
 	$type=get_safe_value($_GET['type']);
@@ -9,29 +16,30 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 		if($type=='deactive'){
 			$status=0;
 		}
-		mysqli_query($con,"update product set status='$status' where id='$id'");
-		redirect('product.php');
+		mysqli_query($con,"update product set status='$status' $condition1 where id='$id'");
+		redirect('product');
 	}
 
 	if($type == 'delete'){
-		$res = mysqli_fetch_assoc(mysqli_query($con,"SELECT * FROM product WHERE id='$id'"));
+		$res = mysqli_fetch_assoc(mysqli_query($con,"SELECT * FROM product $condition1 WHERE id='$id'"));
 		$oldImage = $res['image'];
 		mysqli_query($con,"DELETE FROM product WHERE id='$id'");
 		mysqli_query($con,"DELETE FROM product_detailes WHERE product_id='$id'");
 		unlink(SERVER_PRODUCT_IMAGE.$oldImage);
-		redirect('product.php');
+		redirect('product');
 	}
 
 }
 
-$sql="select product.*,category.category from product,category where product.category_id=category.id order by product.id desc";
+
+$sql="select product.*,category.category from product,category where product.category_id=category.id $condition order by product.id desc";
 $res=mysqli_query($con,$sql);
 
 ?>
   <div class="card">
             <div class="card-body">
               <h1 class="grid_title">Product Master</h1>
-			  <a href="manage_product.php" class="add_link">Add Product</a>
+			  <a href="manage_product" class="add_link">Add Product</a>
 			  <div class="row grid_box">
 				
                 <div class="col-12">
@@ -67,7 +75,7 @@ $res=mysqli_query($con,$sql);
 							?>
 							</td>
 							<td>
-								<a href="manage_product.php?id=<?php echo $row['id']?>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
+								<a href="manage_product?id=<?php echo $row['id']?>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
 								<?php
 								if($row['status']==1){
 								?>

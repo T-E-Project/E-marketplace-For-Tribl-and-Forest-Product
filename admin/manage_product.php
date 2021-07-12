@@ -1,5 +1,11 @@
 <?php 
 include('top.php');
+$condition ='';
+$condition1 ='';
+if($_SESSION['ADMIN_ROLE']=='0'){
+	$condition=" and product.added_by='".$_SESSION['ADMIN_ID']."'" ;
+	$condition1=" and added_by='".$_SESSION['ADMIN_ID']."'" ;
+}
 
 $msg="";
 $category_id="";
@@ -13,7 +19,7 @@ $image_status='required';
 $image_error="";
 if(isset($_GET['id']) && $_GET['id']>0){
 	$id=get_safe_value($_GET['id']);
-	$row=mysqli_fetch_assoc(mysqli_query($con,"select * from product where id='$id'"));
+	$row=mysqli_fetch_assoc(mysqli_query($con,"select * from product where id='$id' $condition1"));
 	$category_id=$row['category_id'];
 	$sub_category_id=$row['sub_category_id'];
 	$product=$row['product'];
@@ -37,9 +43,9 @@ if(isset($_POST['submit'])){
 	$admin_name = $_SESSION['ADMIN_NAME'];
 	
 	if($id==''){
-		$sql="select * from product where product='$product'";
+		$sql="select * from product where product='$product' $condition1";
 	}else{
-		$sql="select * from product where product='$product' and id!='$id'";
+		$sql="select * from product where product='$product' and id!='$id' $condition1";
 	}	
 	if(mysqli_num_rows(mysqli_query($con,$sql))>0){
 		$msg="Product already added";
@@ -51,7 +57,7 @@ if(isset($_POST['submit'])){
 			}else{
 				$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
 				move_uploaded_file($_FILES['image']['tmp_name'],SERVER_PRODUCT_IMAGE.$image);
-				mysqli_query($con,"insert into product(category_id,sub_category_id,product,product_detail,status,added_on,image,type,added_by) values('$category_id','$sub_category_id','$product','$product_detail',1,'$added_on','$image','$product_type','$admin_name')");
+				mysqli_query($con,"insert into product(category_id,sub_category_id,product,product_detail,status,added_on,image,type,added_by) values('$category_id','$sub_category_id','$product','$product_detail',1,'$added_on','$image','$product_type','".$_SESSION['ADMIN_ID']."')");
 				$did=mysqli_insert_id($con);
 				
 				$attributeArr=$_POST['attribute'];
@@ -63,11 +69,11 @@ if(isset($_POST['submit'])){
 						$price=$priceArr[$key];
 						mysqli_query($con,"insert into product_detailes(product_id,attribute,price,status,added_on) values('$did','$attribute','$price',1,'$added_on')");
 					}
-				redirect('product.php');
+				redirect('product');
 			}
 		}else{
 			if($_FILES['image']['type']==''){
-                mysqli_query($con,"UPDATE product SET category_id='$category_id', sub_category_id='$sub_category_id',product='$product',product_detail='$product_detail',image='$image',type='$product_type',added_by='$admin_name' WHERE id='$id'");
+                mysqli_query($con,"UPDATE product SET category_id='$category_id', sub_category_id='$sub_category_id',product='$product',product_detail='$product_detail',image='$image',type='$product_type',added_by='".$_SESSION['ADMIN_ID']."' WHERE id='$id'");
 				$attributeArr=$_POST['attribute'];
 				$priceArr=$_POST['price'];
 				$productDetailsIdArr=$_POST['product_details_id'];
@@ -85,7 +91,7 @@ if(isset($_POST['submit'])){
 					
 					//echo "insert into dish_details(dish_id,attribute,price,status,added_on) values('$did','$attribute','$price',1,'$added_on')";
 				}
-				redirect('product.php');
+				redirect('product');
             }else 
 				if($type!='image/jpeg' && $type!='image/png'){
 				$image_error="Invalid image format please select png/jpeg format";
@@ -110,7 +116,7 @@ if(isset($_POST['submit'])){
 					
 					//echo "insert into dish_details(dish_id,attribute,price,status,added_on) values('$did','$attribute','$price',1,'$added_on')";
 				}
-				redirect('product.php');
+				redirect('product');
 				}
 		
 			}
@@ -227,7 +233,7 @@ $arrType=array("tribal","forest");
 					</div>
                     <button type="submit" class="btn btn-primary mr-2" name="submit">Submit</button>
 
-					<button type="button" class="btn badge-danger mr-2" onclick="add_more()">Add More</button>
+					<!-- <button type="button" class="btn badge-danger mr-2" onclick="add_more()">Add More</button> -->
                   </form>
                 </div>
               </div>

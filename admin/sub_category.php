@@ -1,12 +1,15 @@
 <?php 
 include('top.php');
+if($_SESSION['ADMIN_ROLE']=='0'){
+	redirect('product');
+}
 
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id']>0){
 	$type=get_safe_value($_GET['type']);
 	$id=get_safe_value($_GET['id']);
 	if($type=='delete'){
 		mysqli_query($con,"delete from sub_category where id='$id'");
-		redirect('sub_category.php');
+		redirect('sub_category');
 	}
 	if($type=='active' || $type=='deactive'){
 		$status=1;
@@ -14,7 +17,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 			$status=0;
 		}
 		mysqli_query($con,"update sub_category set status='$status' where id='$id'");
-		redirect('sub_category.php');
+		redirect('sub_category');
 	}
 
 }
@@ -26,7 +29,7 @@ $res=mysqli_query($con,$sql);
   <div class="card">
             <div class="card-body">
               <h1 class="grid_title">Sub Category Master</h1>
-			  <a href="manage_sub_category.php" class="add_link">Add Sub Category</a>
+			  <a href="manage_sub_category" class="add_link">Add Sub Category</a>
               <div class="row grid_box">
 				
                 <div class="col-12">
@@ -54,7 +57,7 @@ $res=mysqli_query($con,$sql);
 							<td><?php echo $row['added_by']?></td>
 							<td><?php echo date("d F Y",strtotime($row['added_on']))?></td>
 							<td>
-								<a href="manage_sub_category.php?id=<?php echo $row['id']?>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
+								<a href="manage_sub_category?id=<?php echo $row['id']?>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
 								<?php
 								if($row['status']==1){
 								?>

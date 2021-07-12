@@ -10,4 +10,7 @@
 
     define('SERVER_BANNER_IMAGE',SERVER_PATH."assets/banner/");
     define('SITE_BANNER_IMAGE',WEBSITE_PATH."assets/banner/");
+
+    define('SERVER_ABOUT_IMAGE',SERVER_PATH."assets/about/");
+    define('SITE_ABOUT_IMAGE',WEBSITE_PATH."assets/about/");
 ?>

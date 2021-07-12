@@ -21938,7 +21938,7 @@ select.tt-hint {
   padding: .4375rem .75rem;
   border: 0;
   outline: 1px solid #e9e8ef;
-  color: #c9c8c8;
+  color: #000;
 }
 
 select.form-control:focus, select.asColorPicker-input:focus, .dataTables_wrapper select:focus,
@@ -29662,3 +29662,31 @@ div.tagsinput span.tag a {
 .ml15{margin-left:15px;}
 .mt8{margin-top:8px;}
 .hand_cursor{cursor:pointer;}
+
+.payment_status{
+	padding: 10px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+}
+
+.payment_status_pending{
+	background-color:red;
+}
+.payment_status_success{
+	background-color:green;
+}
+
+.div_order_id{
+	background-color: #999;
+    padding: 10px;
+    text-align: center;
+}
+
+.div_order_id a{
+	color:#fff;
+}
+
+.wSelect200{
+	width:200px;
+}

@@ -1,5 +1,8 @@
 <?php 
 include('top.php');
+if($_SESSION['ADMIN_ROLE']=='0'){
+	redirect('product');
+}
 $msg="";
 $image="";
 $heading="";
@@ -29,12 +32,12 @@ if(isset($_POST['submit'])){
 			$image=rand(111111111,999999999).'_'.$_FILES['image']['name'];
 			move_uploaded_file($_FILES['image']['tmp_name'],SERVER_BANNER_IMAGE.$image);
 			mysqli_query($con,"insert into banner(heading,order_number,status,added_on,image) values('$heading','$order_number',1,'$added_on','$image')");
-			redirect('banner.php');
+			redirect('banner');
 		}
 	}else{
 		if($_FILES['image']['type']==''){
 			mysqli_query($con,"update banner set heading='$heading',order_number='$order_number' where id='$id'");
-			redirect('banner.php');
+			redirect('banner');
 		}else{
 			$type=$_FILES['image']['type'];	
 			if($type!='image/jpeg' && $type!='image/png'){
@@ -46,7 +49,7 @@ if(isset($_POST['submit'])){
 				move_uploaded_file($_FILES['image']['tmp_name'],SERVER_BANNER_IMAGE.$image);
 			
 				mysqli_query($con,"update banner set heading='$heading',order_number='$order_number',image='$image' where id='$id'");
-				redirect('banner.php');
+				redirect('banner');
 			}
 		}
 	}

@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Style Loadind svg */
+#loading{
+    position: fixed;
+    width: 100%;
+    height:100vh;
+    background: #ffffff
+    url(https://media0.giphy.com/media/jAYUbVXgESSti/giphy.gif?cid=ecf05e47n3v8ymiorhh02ht0gwqkia59da5ujbptokdi6t2o&rid=giphy.gif&ct=g)
+    no-repeat
+    center;
+    z-index: 999999999;
+}
+/* End loading svg */
+.market_price_current{
+    margin-top:70px;
+}
+.market_price_current h1{
+    font-weight:600;
+}
+.market_price_current h3{
+    font-weight:600;
+    text-transform: uppercase;
+    color:#f0f0f0;
+}
+.market_price_current h3 span{
+    font-weight:700;
+}
+.market_price_table_current table th{
+    font-weight:700;
+    font-size:18px;
+    text-transform: uppercase;
+}
+.market_price_table_current table td{
+    font-weight:600;
+    font-size: 18px;
+}
+/* Search box Style */
+.table_market_current .search_box{
+    margin-top: 20px;
+    display:flex;
+    justify-content:space-around;
+}
+.table_market_current .search_box input{
+    width: 100%; 
+    font-weight: 600;
+    padding:10px;
+}
+/* End Search Box Style */
+
+
+.table_market_current select{
+    margin-top:20px;
+    padding:10px;
+    width: 100%;
+    font-weight: 600;
+    border-radius: 3px;
+}
+.table_market_current select option{
+    font-weight:600;
+}
+
+@media (max-width: 900px){
+    .market_price{
+        margin-top:120px;
+    }
+}
+@media (max-width: 650px){
+    .market_price{
+        margin-top:55px;
+    }
+}

@@ -1,7 +1,28 @@
 <?php
     include 'includes/navigation_bar.php';
-    if(!isset($_SESSION['USER_LOGIN'])){
-        header('Location:login.php?type=msg&page=Shopping');
+    $c_id='';
+    $user_id='';
+    $selected ='';
+    if(isset($_GET['c_id']) && $_GET['c_id']>0){
+            $c_id = mysqli_escape_string($con,$_GET['c_id']);
+            $user_id = $_SESSION['USER_ID'];
+            $cart_check = mysqli_query($con,"SELECT * FROM user_cart WHERE user_id='$user_id' AND product_id='$c_id'");
+            if(!isset($_SESSION['USER_LOGIN'])){
+                header('Location:login?type=msg&page=Add to Cart');
+            }else{
+                if(mysqli_num_rows($cart_check)>0){
+                    echo "<script>
+                            alert(`Your Selected Product Alrady Cart, Please Check your Cart Detailes.`);
+                        </script>";
+                redirect('shop');
+                }else{
+                    mysqli_query($con,"INSERT INTO user_cart(user_id,product_id,qty) VALUES('$user_id','$c_id','1')");
+                    echo "<script>
+                            alert(`Congratulation ! your product successfully Added to cart`);
+                        </script>"; 
+                redirect('shop');
+                }
+            }
     }
 ?>
 
@@ -26,8 +47,13 @@
                 <div class="category_display">
                     <ul>
                         <li>
+                            <div class="category_body text-center">
+                                <p><a href="shop?type=forest" class="text-success">Forest Product</a> <span class="pl-2"><a href="shop?type=tribal" class="text-success">Tribal Product</a></span></p>
+                            </div>
+                        </li>
+                        <li>
                             <div class="category_body">
-                                <a href="shop.php"><p>All Products</p></a>
+                                <a href="shop"><p>All Products</p></a>
                             </div>
                         </li>
                         <?php 
@@ -45,7 +71,7 @@
                                             while ($sub_cat_res = mysqli_fetch_assoc($sql_sub_category)){
                                         ?>
                                             <li>
-                                                <a href="shop.php?id=<?php echo $sub_cat_res['id'] ?>"><?php echo $sub_cat_res['sub_category'] ?></a>
+                                                <a href="shop?id=<?php echo $sub_cat_res['id'] ?>" ><?php echo $sub_cat_res['sub_category'] ?></a>
                                             </li>
                                         <?php } ?>
                                     </ul>
@@ -68,6 +94,10 @@
                             $id_cat= mysqli_escape_string($con,$_GET['id']);
                             $product_query.=" and sub_category_id='$id_cat' ";
                         }
+                        if(isset($_GET['type']) && $_GET['type']!=''){
+                            $type_cat= mysqli_escape_string($con,$_GET['type']);
+                            $product_query.=" and type='$type_cat' ";
+                        }
                         $product_query.=" order by id desc";
                         $product_sql = mysqli_query($con,$product_query);
                         if(mysqli_num_rows($product_sql)>0){
@@ -75,7 +105,7 @@
                     ?>
                     <div class="product_body">
                         <div class="view_product text-right">
-                            <a href="product-detailes.php?id=<?php echo $row['id']?>"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                            <a href="product-detailes?id=<?php echo $row['id']?>"><i class="fa fa-eye" aria-hidden="true"></i></a>
                         </div>
                         <img src="<?php echo SITE_PRODUCT_IMAGE.$row['image']?>" alt="">
                         <div class="product_desc">

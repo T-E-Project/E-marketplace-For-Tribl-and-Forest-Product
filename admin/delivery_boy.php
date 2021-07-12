@@ -1,6 +1,8 @@
 <?php 
 include('top.php');
-
+if($_SESSION['ADMIN_ROLE']=='0'){
+	redirect('product');
+}
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id']>0){
 	$type=get_safe_value($_GET['type']);
 	$id=get_safe_value($_GET['id']);
@@ -10,7 +12,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 			$status=0;
 		}
 		mysqli_query($con,"update delivery_boy set status='$status' where id='$id'");
-		redirect('delivery_boy.php');
+		redirect('delivery_boy');
 	}
 
 }
@@ -22,7 +24,7 @@ $res=mysqli_query($con,$sql);
   <div class="card">
             <div class="card-body">
               <h1 class="grid_title">Delivery Boy Master</h1>
-			  <a href="manage_delivery_boy.php" class="add_link">Add Delivery</a>
+			  <a href="manage_delivery_boy" class="add_link">Add Delivery</a>
 			  <div class="row grid_box">
 				
                 <div class="col-12">
@@ -53,7 +55,7 @@ $res=mysqli_query($con,$sql);
 							?>
 							</td>
 							<td>
-								<a href="manage_delivery_boy.php?id=<?php echo $row['id']?>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
+								<a href="manage_delivery_boy?id=<?php echo $row['id']?>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
 								<?php
 								if($row['status']==1){
 								?>

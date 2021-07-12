@@ -9,19 +9,29 @@
             $sql = mysqli_query($con,"SELECT * FROM banner where status = '1'");
             while($row = mysqli_fetch_assoc($sql)){
         ?>
-           <a href="<?php echo WEBSITE_PATH; ?>shop.php"><div class="home_banner">
+           <a href="<?php echo WEBSITE_PATH; ?>shop"><div class="home_banner">
                 <img src="<?php echo SITE_BANNER_IMAGE.$row['image'] ?>" class="img-fluid" alt="">
             </div></a>
         <?php } ?>
         </div>
     </div>
-    <div class="container product_view">
+    <div class="container-fluid product_view">
         <div class="row" id="recent_home">
+            <?php 
+                $sql_p = mysqli_query($con,"SELECT * FROM product where status = '1' order by id desc");
+                while($row_p=mysqli_fetch_assoc($sql_p)){
+            ?>
             <div class="recent_body">
-                <img src="<?php echo WEBSITE_PATH; ?>assets/products/img1.jpg" alt="">
+                <img src="<?php echo SITE_PRODUCT_IMAGE.$row_p['image'] ?>" alt="">
                 <div class="product_desc">
-                    <h3>tomato</h3>
-                    <h4>&#8377; 32.00 <span>Per Kg</span></h4>
+                    <h3><?php echo $row_p['product'];?></h3>
+                    <?php
+                        $row_p=$row_p['id'];
+                        $attei_sql = mysqli_query($con,"SELECT * FROM product_detailes WHERE product_id	='$row_p'");
+                        while($row_price=mysqli_fetch_assoc($attei_sql)){
+                    ?>
+                        <h4>&#8377; <?php echo $row_price['price'];?> <span> for <?php echo $row_price['attribute'];?></span></h4>
+                    <?php } ?>
                     <ul class="d-flex">
                         <li>
                             <i class="fa fa-star" aria-hidden="true"></i>
@@ -36,141 +46,10 @@
                             <i class="fa fa-star" aria-hidden="true"></i>
                         </li>
                     </ul>
-                    <a href="#"><button class="btn">Shop Now</button></a>
+                    <a href="<?php echo WEBSITE_PATH; ?>shop"><button class="btn">Shop Now</button></a>
                 </div>
             </div>
-            <div class="recent_body">
-                <img src="<?php echo WEBSITE_PATH; ?>assets/products/img1.jpg" alt="">
-                <div class="product_desc">
-                    <h3>tomato</h3>
-                    <h4>&#8377; 32.00 <span>Per Kg</span></h4>
-                    <ul class="d-flex">
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                    </ul>
-                    <a href="#"><button class="btn">Shop Now</button></a>
-                </div>
-            </div>
-            <div class="recent_body">
-                <img src="<?php echo WEBSITE_PATH; ?>assets/products/img1.jpg" alt="">
-                <div class="product_desc">
-                    <h3>tomato</h3>
-                    <h4>&#8377; 32.00 <span>Per Kg</span></h4>
-                    <ul class="d-flex">
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                    </ul>
-                    <a href="#"><button class="btn">Shop Now</button></a>
-                </div>
-            </div>
-            <div class="recent_body">
-                <img src="<?php echo WEBSITE_PATH; ?>assets/products/img1.jpg" alt="">
-                <div class="product_desc">
-                    <h3>tomato</h3>
-                    <h4>&#8377; 32.00 <span>Per Kg</span></h4>
-                    <ul class="d-flex">
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                    </ul>
-                    <a href="#"><button class="btn">Shop Now</button></a>
-                </div>
-            </div>
-            <div class="recent_body">
-                <img src="<?php echo WEBSITE_PATH; ?>assets/products/img1.jpg" alt="">
-                <div class="product_desc">
-                    <h3>tomato</h3>
-                    <h4>&#8377; 32.00 <span>Per Kg</span></h4>
-                    <ul class="d-flex">
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                    </ul>
-                    <a href="#"><button class="btn">Shop Now</button></a>
-                </div>
-            </div>
-            <div class="recent_body">
-                <img src="<?php echo WEBSITE_PATH; ?>assets/products/img1.jpg" alt="">
-                <div class="product_desc">
-                    <h3>tomato</h3>
-                    <h4>&#8377; 32.00 <span>Per Kg</span></h4>
-                    <ul class="d-flex">
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                    </ul>
-                    <a href="#"><button class="btn">Shop Now</button></a>
-                </div>
-            </div>
-            <div class="recent_body">
-                <img src="<?php echo WEBSITE_PATH; ?>assets/products/img1.jpg" alt="">
-                <div class="product_desc">
-                    <h3>tomato</h3>
-                    <h4>&#8377; 32.00 <span>Per Kg</span></h4>
-                    <ul class="d-flex">
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                        <li>
-                            <i class="fa fa-star" aria-hidden="true"></i>
-                        </li>
-                    </ul>
-                    <a href="#"><button class="btn">Shop Now</button></a>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
     <!-- Services Section -->

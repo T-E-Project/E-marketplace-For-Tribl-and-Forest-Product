@@ -17,7 +17,7 @@
         $page = mysqli_escape_string($con,$_GET['page']);
         if($type=='msg'){
             $msg = "<script>
-                    alert(`Your Are Not Login Please Login Now For Access $page Page`);
+                    alert(`Your Are Not Login Please Login Now For Access $page Products`);
                 </script>"; 
         }
     }
@@ -25,15 +25,17 @@
     if(isset($_POST['login'])){
         $username = mysqli_escape_string($con,$_POST['username']);
         $password = mysqli_escape_string($con,$_POST['password']);
-        $check = mysqli_query($con,"select * from users where username = ' $username' AND password='$password' AND status='1'");
+        $password = md5($password);
+        $check = mysqli_query($con,"select * from users where username = ' $username' AND password='$password' AND email_verification='1' AND status='1'");
         $res = mysqli_fetch_assoc($check);
         if(mysqli_num_rows($check)){
             $_SESSION['USER_LOGIN'] = 'yes';
             $_SESSION['USER_NAME'] = $res['name'];
-            header('Location:index.php');
+            $_SESSION['USER_ID'] = $res['id'];
+            header('Location:index');
         }else{
             $msg = "<div class='alert' role='alert'>
-            Please Enter Correct Username And Password Otherwise <a href='registration.php'> SIGNUP NOW </a>
+            Please Enter Correct Username And Password Or Verify Your Email Id</a>
             </div>";
         }
     }
@@ -63,7 +65,7 @@
                 </div>
                 <div class="form-input d-flex align-items-center flex-wrap">
                     <button type="submit" name="login">Login Now</button>
-                    <p>You are Not Signup,Please <a href="<?php echo WEBSITE_PATH; ?>registration.php">signup Here</a>.</p>
+                    <p>You are Not Signup,Please <a href="<?php echo WEBSITE_PATH; ?>registration">signup Here</a>.</p>
                 </div>
             </form>
         </div>

@@ -1,5 +1,8 @@
 <?php 
 include('top.php');
+if($_SESSION['ADMIN_ROLE']=='0'){
+	redirect('product');
+}
 $msg="";
 $category="";
 $order_number="";
@@ -34,7 +37,7 @@ if(isset($_POST['submit'])){
 			mysqli_query($con,"update category set category='$category',order_no='$order_number',added_by='$admin_name' where id='$id'");
 		}
 		
-		redirect('category.php');
+		redirect('category');
 	}
 }
 ?>

@@ -202,7 +202,6 @@ body{
             background: #d9a7c7;  /* fallback for old browsers */
             background: -webkit-linear-gradient(to right, #fffcdc, #d9a7c7);  /* Chrome 10-25, Safari 5.1-6 */
             background: linear-gradient(to right, #fffcdc, #d9a7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */            
-            height: 700px;
         }
         .home_banner{
             cursor: pointer;
@@ -211,30 +210,15 @@ body{
         .home_banner img{
             width: 100%;
         }
-        .slick-dots{
-            bottom:50px;
-        }
-        .slick-dots li button:before{
-            color:var(--color);
-        }
         /* ===========Responsive=========== */
             @media(max-width:900px){
                 .home_banner{
                     margin-top:140px;
                 }
-                .slick-dots{
-                    bottom:25px;
-                }
-                .home_page{
-                    height:600px;
-                }
             }
             @media(max-width:670px){
                 .home_banner{
                     margin-top:58px;
-                }
-                .home_page{
-                    height:420px;
                 }
             }
         /* ===========Responsive=========== */
@@ -242,22 +226,26 @@ body{
     /* ===========Home Banner==================== */
 
     /* ========Recent Product========== */
-            .product_view {
-                position:absolute;
-                top: 320px;
-                left:0;
-                right:0;
+            .product_view{
+                padding:50px;
+                background: #d9a7c7;  /* fallback for old browsers */
+                background: -webkit-linear-gradient(to right, #fffcdc, #d9a7c7);  /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to right, #fffcdc, #d9a7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */            
             }
             .product_view .recent_body{
                 background-color: var(--color);
                 box-shadow: var(--shado);
                 color: var(--color2);
-                margin: 5px;
+                border-radius: 5px;
+                margin:5px;
             }
             .product_view .recent_body img{
                 width: 100%;
+                height:200px;
+                border-radius: 5px;
             }
             .product_view .recent_body .product_desc{
+                text-align: center;
                 padding:10px;
                 font-family: var(--font);
             }
@@ -269,6 +257,9 @@ body{
             .product_view .recent_body .product_desc h4{
                 text-transform:capitalize;
                 font-size:18px;
+             }
+             .product_view .recent_body .product_desc ul{
+                 justify-content:center;
              }
             .product_view .recent_body .product_desc ul li{
                padding: 2px;
@@ -288,29 +279,17 @@ body{
              }
 
              /* ===========Responsive=========== */
-                @media (max-width:1100px) {
-                    .product_view {
-                        top: 280px;
-                    }
-                }
                 @media(max-width:900px){
-                    .product_view {
-                        top: 300px;
-                    }
                     .home_banner{
                         margin-top:140px;
                     }
-                    .slick-dots{
-                        bottom:25px;
+                    .product_view{
+                        padding:25px 10px;
                     }
                 }
                 @media(max-width:670px){
                     .home_banner{
                         margin-top:58px;
-                    }
-                    .product_view {
-                       top:0;
-                       margin-top:140px
                     }
                     .product_view .recent_body .product_desc h3{
                        font-size:20px;
@@ -318,12 +297,6 @@ body{
                     .product_view .recent_body .product_desc h4{
                         font-size:16px;
                      }
-                }
-                @media(max-width:365px){
-                    .product_view {
-                       top:0;
-                       margin-top:120px
-                    }
                 }
             /* ===========Responsive=========== */
     /* ========X==Home Reent==X======== */
@@ -358,7 +331,7 @@ body{
 /* =========Home Page============ */
 
 /* =========About Us Page========== */
-    .about_us,.shopping,.product_detailes,.contact,.registration,.login_page,.cart_page{
+    .about_us,.shopping,.product_detailes,.contact,.registration,.login_page,.cart_page,.profile,.checkout,.success_page,.orders_page{
         margin-top:100px;
     }
     .heading h2{
@@ -435,12 +408,12 @@ body{
     }
     /* =========Responsive=========== */
         @media(max-width:900px){
-            .about_us,.shopping,.product_detailes,.contact,.registration,.login_page,.cart_page{
+            .about_us,.shopping,.product_detailes,.contact,.registration,.login_page,.cart_page,.profile,.checkout,.success_page,.orders_page{
                 margin-top:160px;
             }
         }
         @media(max-width:648px){
-            .about_us,.shopping,.product_detailes,.contact,.registration,.login_page,.cart_page{
+            .about_us,.shopping,.product_detailes,.contact,.registration,.login_page,.cart_page,.profile,.checkout,.success_page,.orders_page{
                 margin-top:80px;
             }
         }
@@ -519,14 +492,16 @@ body{
             margin:10px;
             background-color: var(--color);
             box-shadow: var(--shado);
+            border-radius: 5px;
         }
         .product_body img{
             width:100%;
             height:200px;
+            border-radius: 5px;
         }
         .product_body .view_product{
-            padding:5px;
-           position:absolute;
+            padding:5px 2px;
+            position:absolute;
         }
         .product_body .view_product a{
             padding:5px 8px;
@@ -966,3 +941,194 @@ body{
             }
     /* ==========X==Responsive Ness==X======== */
 /* =============X===Cart Page==X=============== */
+
+/* =================Profile Page=============== */
+            .profile .personal_info{
+                margin-top: 10px;
+                justify-content: center;
+                padding:20px;
+                background-color: var(--color);
+                box-shadow: var(--shado);
+            }
+            .profile .personal_info .personal_info_row{
+                border-bottom: 1px solid var(--logo);
+            }
+            .profile .personal_info p,.profile_form p{
+                font-size:20px;
+                text-align: center;
+                font-family: var(--font);
+                font-weight: 700;
+                color:var(--logo);
+                text-transform:uppercase;
+            }
+            .profile .update_profile .btn{
+                background-color:var(--logo);
+                border: 1px solid var(--color4);
+                color: var(--color);
+                text-transform: uppercase;
+                font-family: var(--font);
+                font-weight:700;
+                transition: all 0.5s ease-in-out;
+            }
+            .profile .update_profile .btn:hover{
+                background-color: transparent;
+                color:var(--color2);
+                border: 1px solid var(--logo);
+            }
+            .profile .personal_info .prosonal_filed{
+                display:flex;
+                justify-content:center;
+            }
+            .profile .personal_info .prosonal_filed ul li{
+                font-size:20px;
+                font-family: var(--font);
+                font-weight:700;
+                color: var(--color4);
+            }
+            .profile .personal_info .prosonal_filed ul li span{
+                font-size:18px;
+                font-family: var(--font);
+                font-weight:normal;
+                color: var(--color2);
+                padding-left:10px;
+            }
+
+            .profile_form{
+                justify-content:center;
+            }
+            .profile_form form .form-input label{
+                font-size: 18px;
+                font-family: var(--font);
+                font-weight:700;
+                padding:5px 0px;
+            }
+            .profile_form form .form-input select,.checkout .checkout_row form .form-input select{
+                width:100%;
+                background-color:var(--color);
+                box-shadow:var(--shado);
+                padding:20px;
+                width:100%;
+                border:none;
+                color: var(--color2);
+                font-weight:700;
+            }
+            .profile_form form .form-input select:focus,.checkout .checkout_row form .form-input select:focus{
+                outline:2px solid var(--logo);
+                background-color:var(--color);
+            }
+/* ==============X===Profile Page==X============= */
+
+/* =================Checkout Page=============== */
+            .checkout .checkout_row h2{
+                font-size:22px;
+                color:var(--logo);
+                font-weight:700;
+                font-family: var(--font);
+                text-align:center;
+            }
+            .checkout .checkout_row form{
+                margin-top:20px;
+            }
+            .checkout .checkout_row form .form-input label{
+                font-family: var(--font);
+                font-weight:700;
+                color:var(--color4);
+                font-size:18px;
+            }
+            .checkout .checkout_row form .form-input input,.checkout .checkout_row form .form-input select{
+                padding:10px;
+            }
+            .checkout .checkout_row form .form-input button{
+                margin:0px;
+            }
+            .checkout .checkout_row form p{
+                padding:10px;
+                color: var(--color2);
+                text-transform:capitalize;
+                font-family: var(--font);
+            }
+            .checkout .checkout_row form .payment{
+              margin:20px 5px 0px 10px;
+            }
+            .checkout .checkout_row form .payment label{
+                font-size:20px;
+                padding:5px;
+                text-transform:capitalize;
+                font-family: var(--font);
+                font-weight:700;
+            }
+            .checkout .checkout_sumery{
+                background-color:var(--color);
+                box-shadow: var(--shado);
+                padding:20px;
+                border:1px solid var(--logo);
+                border-radius: 5px;
+            }
+            .checkout .checkout_sumery .cart_sumary_info{
+                justify-content:space-between;
+                flex-wrap: wrap;
+                border-bottom: 1px solid var(--logo);
+                margin-top: 20px;
+            }
+            .checkout .checkout_sumery .cart_sumary_info .cart_summary_iteam_details h3{
+                font-family: var(--font);
+                font-size:20px;
+                padding:5px;
+                color: var(--color4);
+                font-weight:700;
+            }
+            .checkout .checkout_sumery .cart_sumary_info .cart_iteam_total_sumary h3,.checkout .checkout_sumery .checkout_total h3{
+                font-size:22px;
+                font-family: var(--font);
+                color: var(--color2);
+                padding:5px;
+                font-weight:700;
+            }
+            .checkout .checkout_sumery .checkout_total{
+                margin-top: 10px;
+                text-align:right;
+            }
+
+/* ==============X===Checkout Page==X============= */
+
+/* ============Success Message========= */
+            .success_page img{
+                width: 150px;
+                padding:10px;
+            }
+           .success_page h2{
+               color: var(--logo);
+               font-weight:700;
+               font-family: var(--font);
+               text-align:center;
+               text-transform:capitalize;
+           }
+           .success_page h3{
+               color: var(--color2);
+               font-family: var(--font);
+               text-align:center;
+               text-transform:capitalize;
+               font-weight:700;
+           }
+           .success_page p{
+               text-align:center;
+               text-transform:capitalize;
+               color: var(--color2);
+               font-family: var(--font);
+           }
+/* =========X===Success Message===X====== */
+
+/* ===========Orders Page========= */
+           .orders_page table{
+               margin-top: 20px;
+           }
+           .orders_page table tr th{
+               font-size: 20px;
+               font-family: var(--font);
+               font-weight:700;
+           }
+           .orders_page table tr td{
+               font-size:18px;
+               font-family: var(--font);
+           }
+/* =========X==Orders Page==X======= */

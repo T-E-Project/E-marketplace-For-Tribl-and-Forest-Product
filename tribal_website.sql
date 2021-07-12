@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 08, 2021 at 08:00 AM
+-- Generation Time: Jul 12, 2021 at 12:31 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -24,6 +24,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `about_us`
+--
+
+CREATE TABLE `about_us` (
+  `id` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `heading` varchar(255) NOT NULL,
+  `message` text NOT NULL,
+  `order_number` int(11) NOT NULL,
+  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `status` tinyint(4) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `about_us`
+--
+
+INSERT INTO `about_us` (`id`, `image`, `heading`, `message`, `order_number`, `added_on`, `status`) VALUES
+(5, '871369014_about_d1.jpg', 'Our Mission', 'To Desing the E-Marketplace Farmer and Tribal sell their product online and they give better prices for their products and also our team aim to develop digital farm.', 1, '2021-07-08 07:13:00', 1),
+(6, '226519017_about_vission.png', 'Our Visson', ' Our vision is to achieve sustainable growth within India’s agricultural industry by simplifying the everyday lives of farmers throughout the country. We aim to improve the quality of life for farmers throughout India by providing the technological infrastructure necessary to create the smarter future of farming.', 2, '2021-07-08 07:15:32', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `admin`
 --
 
@@ -35,15 +59,17 @@ CREATE TABLE `admin` (
   `password` varchar(10) NOT NULL,
   `roll` tinyint(4) NOT NULL,
   `register_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `status` tinyint(4) NOT NULL
+  `status` tinyint(4) NOT NULL,
+  `email_verification` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `name`, `email`, `username`, `password`, `roll`, `register_on`, `status`) VALUES
-(1, ' Pruthviraj Dineshsing Rajput', 'pruthvirajrajput305@gmail.com', ' admin', 'admin', 1, '2021-07-06 05:18:32', 1);
+INSERT INTO `admin` (`id`, `name`, `email`, `username`, `password`, `roll`, `register_on`, `status`, `email_verification`) VALUES
+(1, 'Pruthviraj Rajput', 'pruthvirajrajput305@gmail.com', ' admin', '123', 1, '2021-07-12 08:25:13', 1, 1),
+(2, 'John Dev', 'prithvirajrajput575@gmail.com', ' vendor', '123', 0, '2021-07-12 08:50:09', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -128,13 +154,6 @@ CREATE TABLE `coupon_code` (
   `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `coupon_code`
---
-
-INSERT INTO `coupon_code` (`id`, `coupon_code`, `coupon_type`, `coupon_value`, `cart_min_value`, `expired_on`, `status`, `added_on`) VALUES
-(2, 'FIRST_50', 'P', 100, 200, '2021-07-09', 1, '2021-07-06 01:30:21');
-
 -- --------------------------------------------------------
 
 --
@@ -155,7 +174,53 @@ CREATE TABLE `delivery_boy` (
 --
 
 INSERT INTO `delivery_boy` (`id`, `name`, `mobile`, `password`, `status`, `added_on`) VALUES
-(1, 'Pruthviraj Dineshsing ', '7720993937', '123', 1, '2021-07-06 16:52:44');
+(1, 'Pruthviraj Rajput', '7720993937', '123', 1, '2021-07-10 18:19:54');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_master`
+--
+
+CREATE TABLE `order_master` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `total_price` int(11) NOT NULL,
+  `payment_status` tinyint(4) NOT NULL,
+  `delivery_boy_id` int(11) NOT NULL,
+  `status` varchar(255) NOT NULL,
+  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_master`
+--
+
+INSERT INTO `order_master` (`id`, `user_id`, `product_id`, `qty`, `total_price`, `payment_status`, `delivery_boy_id`, `status`, `added_on`) VALUES
+(1, 1, 6, 1, 80, 1, 1, 'On the Way', '2021-07-12 10:15:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_status`
+--
+
+CREATE TABLE `order_status` (
+  `id` int(11) NOT NULL,
+  `order_status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_status`
+--
+
+INSERT INTO `order_status` (`id`, `order_status`) VALUES
+(1, 'Pending'),
+(2, 'Despatch '),
+(3, 'On the Way'),
+(4, 'Delivered');
 
 -- --------------------------------------------------------
 
@@ -171,7 +236,7 @@ CREATE TABLE `product` (
   `product_detail` text NOT NULL,
   `image` varchar(255) NOT NULL,
   `type` enum('tribal','forest') NOT NULL,
-  `added_by` varchar(255) NOT NULL,
+  `added_by` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL,
   `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -181,21 +246,15 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `category_id`, `sub_category_id`, `product`, `product_detail`, `image`, `type`, `added_by`, `status`, `added_on`) VALUES
-(3, 11, 22, 'Onion', 'Onion is a vegetable which is almost like a staple in Indian food. This is also known to be one of the essential ingredients of raw salads. They come in different colours like white, red or yellow and are quite in demand in cold salads and hot soups.\r\nYou can dice, slice or cut it in rings and put it in burgers and sandwiches. Onions emit a sharp flavour and fragrance once they are fried; it is due to the sulphur compound in the vegetable.Onions are known to be rich in biotin.\r\nMost of the flavonoids which are known as anti-oxidants are concentrated more in the outer layers, so when you peel off the layers, you should remove as little as possible.', '172748382_v1.jpg', 'forest', ' Pruthviraj Dineshsing Rajput', 1, '2021-07-07 11:17:15'),
-(4, 11, 22, 'Potato', 'Fresho Potatoes are nutrient-dense, non-fattening and have reasonable amount of calories. Include them in your regular meals so that the body receives a good supply of carbohydrates, dietary fibers and essential minerals such as copper, magnesium, and iron. In India, potatoes are probably the second-most consumed vegetables after onions.', '443902981_v2.jpg', 'forest', ' Pruthviraj Dineshsing Rajput', 1, '2021-07-06 19:49:49'),
-(5, 11, 22, 'Tomato', 'Tomato Hybrids are high-quality fruits compared to desi, local tomatoes. They contain numerous edible seeds and are red in colour due to lycopene, an anti-oxidant.', '553503941_v3.jpg', 'forest', ' Pruthviraj Dineshsing Rajput', 1, '2021-07-06 19:52:53'),
-(6, 11, 22, 'Fresho Capsicum', 'Leaving a moderately pungent taste on the tongue, Green capsicums, also known as green peppers are bell shaped, medium-sized fruit pods.\r\nThey have thick and shiny skin with a fleshy texture inside.\r\n', '529522360_v4.jpg', 'forest', ' Pruthviraj Dineshsing Rajput', 1, '2021-07-06 19:58:15'),
-(7, 11, 23, 'Fresho Banana', 'Tiny and small sized, this variety is called Yelakki in Bangalore and Elaichi in Mumbai. Despite its small size, they are naturally flavoured, aromatic and sweeter compared to regular bananas.', '860151324_f1.jpg', 'forest', ' Pruthviraj Dineshsing Rajput', 1, '2021-07-06 20:01:39'),
-(8, 11, 23, 'Fresho Orange', 'Navel oranges are very sugary and juicy and considered to be the world\'s finest orange for fresh consumption because they are very sweet, naturally juice, seedless and peels and segments very easily. It has a variety of phytochemicals containing flavanoids hesperetin, beta-carotene and carotenoids alpha etc.', '696957634_f2.jpg', 'forest', ' Pruthviraj Dineshsing Rajput', 1, '2021-07-06 20:05:48'),
-(9, 11, 23, 'Fresho Mallika Mango', 'Being a hybrid of Neelum and Dasheri, Mallika has a perfect blend of sweetness and tartness.\r\nIt is a mid season variety.\r\nWe have handpicked the best quality mangoes just for you.', '959371458_f3.jpg', 'forest', ' Pruthviraj Dineshsing Rajput', 1, '2021-07-06 20:08:22'),
-(10, 11, 23, 'Fresho Muskmelon', 'Fresho Organic products are organically grown and handpicked by expert.\r\nProduct image shown is for representation purpose only, the actually product may vary based on season, produce & availability.', '923074327_f4.jpg', 'forest', ' Pruthviraj Dineshsing Rajput', 1, '2021-07-06 20:13:00'),
-(11, 11, 23, 'Fresho Mosambi ', 'Fresho Mosambis are of the best quality, handpicked and sourced directly from the farmers of Anantapur. Sweet lime or mosambi is lime-like, large-sized with an underlying yellow base. The intense, refreshing aroma is due to the essential oils present in its skin. It generally tastes sweet, occasionally tart to sweet. Enriched with Vitamin C, protein and fiber, it provides a range of health benefits. You can even make Juice from this fruit.', '197802950_f5.jpg', 'forest', ' Pruthviraj Dineshsing Rajput', 1, '2021-07-06 20:15:44'),
-(12, 11, 23, 'Fresho Papaya ', 'Semi ripe papayas have blend of sweet buttery consistency and sour taste. They are half green and half yellow.\r\nRipe papaya have orange flesh and black coloured seeds at the centre.\r\nDo not forget to check our delicious fruit recipe - https://www.bigbasket.com/cookbook/recipes/557/raw-papaya-and-coconut-curry/', '286427720_f6.jpg', 'forest', ' Pruthviraj Dineshsing Rajput', 1, '2021-07-06 20:17:36'),
-(13, 7, 15, 'Bhil Black & White Paper Painting', 'Each Tribes India Bhil painting is appealing to the visual senses. The bhil paintings intelligently use natural materials like neem twigs, turmeric and leaves.', '745057715_pb1.jpg', 'tribal', ' Pruthviraj Dineshsing Rajput', 1, '2021-07-06 20:20:50'),
-(14, 7, 15, 'Bhil Blue, Green', 'The Bhil Paintings make intelligent use of natural materials such as neem twigs, turmeric, leaves, vegetables, flour and oil to intorduce attractive colours to their traditional painting form. Each Bhil Painting offered by Tribes India is appealing to the visual senses.', '977778452_pb2.jpg', 'tribal', ' Pruthviraj Dineshsing Rajput', 1, '2021-07-06 20:22:36'),
-(15, 8, 18, 'Handwoven Single Runnner Mat', 'Now, beautify your home with Tribes India’s this table runner.It will look good on your bed room, dinning room, guest room.', '764836391_l1.jpg', 'tribal', ' Pruthviraj Dineshsing Rajput', 1, '2021-07-06 20:24:36'),
-(16, 8, 19, 'Hand Crafted FAN', 'The folk and tribal arts of India are very ethnic and simple, and yet colorful and vibrant enough to speak volumes about the countries rich heritage', '914098383_d1.jpg', 'tribal', ' Pruthviraj Dineshsing Rajput', 1, '2021-07-06 20:26:14'),
-(17, 10, 21, 'Dry Fruit Box', 'Nicely Crafted Work To Keep Dry Fruits With Good Quality Wood.', '292571522_w1.jpg', 'tribal', ' Pruthviraj Dineshsing Rajput', 1, '2021-07-07 17:58:40');
+(1, 11, 22, 'Fresho Onion', 'Onion is a vegetable which is almost like a staple in Indian food. This is also known to be one of the essential ingredients of raw salads. They come in different colours like white, red or yellow and are quite in demand in cold salads and hot soups.', '836839366_v1.jpg', 'forest', 0, 1, '2021-07-10 13:34:36'),
+(2, 11, 22, 'Fresho Potato', 'Consumption of potatoes helps to maintain the blood glucose level and keeps the brain alert and active.', '287282088_v2.jpg', 'forest', 0, 1, '2021-07-10 13:34:29'),
+(3, 11, 22, 'Fresho Capsicum', 'Leaving a moderately pungent taste on the tongue, Green capsicums, also known as green peppers are bell shaped, medium-sized fruit pods.', '966445796_v4.jpg', 'forest', 0, 1, '2021-07-09 22:05:47'),
+(4, 11, 23, 'Fresho Banana ', 'Tiny and small sized, this variety is called Yelakki in Bangalore and Elaichi in Mumbai. Despite its small size, they are naturally flavoured, aromatic and sweeter compared to regular bananas.', '120683152_f1.jpg', 'forest', 0, 1, '2021-07-09 22:06:49'),
+(5, 11, 23, 'Fresho Orange', 'Navel oranges are very sugary and juicy and considered to be the world\'s finest orange for fresh consumption because they are very sweet, naturally juice, seedless and peels and segments very easily. It has a variety of phytochemicals containing flavanoids hesperetin, beta-carotene and carotenoids alpha etc. It is wealthy in Vitamin C, A and Folate and includes small amounts of Vitamin E & B complex vitamins too.', '889674852_f2.jpg', 'forest', 0, 1, '2021-07-09 22:07:35'),
+(6, 11, 23, 'Fresho Mallika Mango', 'Being a hybrid of Neelum and Dasheri, Mallika has a perfect blend of sweetness and tartness.', '841456236_f3.jpg', 'forest', 2, 1, '2021-07-12 10:13:22'),
+(7, 8, 19, 'Hand Crafted FAN', 'The folk and tribal arts of India are very ethnic and simple, and yet colorful and vibrant enough to speak volumes about the countries rich heritage.', '581194153_d1.jpg', 'tribal', 0, 1, '2021-07-09 22:09:45'),
+(8, 10, 21, 'Dry Fruit Box', 'Nicely Crafted Work To Keep Dry Fruits With Good Quality Wood.', '501331193_w1.jpg', 'tribal', 0, 1, '2021-07-09 22:10:38'),
+(10, 7, 15, 'Bhil Black & White Paper Painting', 'Each Tribes India Bhil painting is appealing to the visual senses. The bhil paintings intelligently use natural materials like neem twigs, turmeric and leaves.', '126270583_pb1.jpg', 'tribal', 2, 1, '2021-07-12 06:01:38');
 
 -- --------------------------------------------------------
 
@@ -217,34 +276,15 @@ CREATE TABLE `product_detailes` (
 --
 
 INSERT INTO `product_detailes` (`id`, `product_id`, `attribute`, `price`, `status`, `added_on`) VALUES
-(1, 15, 'one item ', 50, 1, '2021-07-07 18:05:38'),
-(7, 14, 'Per Item ', 200, 1, '2021-07-07 18:06:26'),
-(8, 13, 'Per Item ', 250, 1, '2021-07-07 18:07:05'),
-(9, 12, '1 kg', 50, 1, '2021-07-07 18:07:38'),
-(10, 11, '1 kg', 50, 1, '2021-07-07 02:34:31'),
-(11, 10, '1 kg', 60, 1, '2021-07-07 18:08:27'),
-(12, 9, '1 kg', 60, 1, '2021-07-07 18:08:57'),
-(13, 8, '1 kg', 40, 1, '2021-07-07 18:09:27'),
-(14, 7, '1 kg', 50, 1, '2021-07-07 18:09:54'),
-(19, 1, '1 kg', 250, 1, '2021-07-07 07:08:26'),
-(21, 3, '1 kg', 25, 1, '2021-07-07 11:14:08'),
-(22, 3, '500Gm', 18, 1, '2021-07-06 19:44:08'),
-(23, 4, '1 kg', 30, 1, '2021-07-07 18:10:39'),
-(24, 4, '500 Gm', 20, 1, '2021-07-07 18:10:39'),
-(25, 5, '1 kg', 20, 1, '2021-07-06 19:52:53'),
-(26, 5, '500Gm', 10, 1, '2021-07-06 19:52:53'),
-(27, 6, '1 kg', 50, 1, '2021-07-06 19:58:15'),
-(28, 7, '500 Gm', 30, 1, '2021-07-07 18:09:54'),
-(29, 8, '500 Gm', 20, 1, '2021-07-07 18:09:27'),
-(30, 9, '500 Gm', 30, 1, '2021-07-07 18:08:57'),
-(31, 10, '500 Gm', 30, 1, '2021-07-07 18:08:27'),
-(32, 11, '500 Gm', 25, 1, '2021-07-07 18:07:58'),
-(33, 12, '500 Gm', 25, 1, '2021-07-07 18:07:38'),
-(34, 13, 'Per two  Item ', 365, 1, '2021-07-07 18:07:05'),
-(35, 14, 'Per two items ', 350, 1, '2021-07-07 18:06:26'),
-(36, 15, 'two Item ', 300, 1, '2021-07-07 18:05:38'),
-(37, 16, 'Per Item ', 200, 1, '2021-07-06 20:26:14'),
-(38, 17, 'Per Item ', 200, 1, '2021-07-06 20:28:40');
+(1, 1, '1 kg', 30, 1, '2021-07-09 22:02:21'),
+(2, 2, '1 kg', 20, 1, '2021-07-09 22:03:16'),
+(3, 3, '1 kg', 50, 1, '2021-07-09 22:05:47'),
+(4, 4, '1 kg', 30, 1, '2021-07-09 22:06:49'),
+(5, 5, '1 kg', 20, 1, '2021-07-09 22:07:35'),
+(6, 6, '1 kg', 80, 1, '2021-07-09 22:08:27'),
+(7, 7, 'Per Item ', 250, 1, '2021-07-09 22:09:45'),
+(8, 8, 'Per Item ', 400, 1, '2021-07-09 22:10:38'),
+(10, 10, 'Per Item ', 200, 1, '2021-07-12 06:01:38');
 
 -- --------------------------------------------------------
 
@@ -289,19 +329,64 @@ CREATE TABLE `users` (
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `resister_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `status` tinyint(4) NOT NULL
+  `status` tinyint(4) NOT NULL,
+  `email_verification` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `username`, `password`, `resister_on`, `status`) VALUES
-(1, ' Pruthviraj Rajput', 'prithvirajrajput575@gmail.com', ' user', '123', '2021-07-07 17:57:05', 1);
+INSERT INTO `users` (`id`, `name`, `email`, `username`, `password`, `resister_on`, `status`, `email_verification`) VALUES
+(1, ' John Dev', 'pruthviraj.rajput011@gmail.com', ' user', 'd064bf1ad039ff366564f352226e7640', '2021-07-10 18:48:45', 1, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_cart`
+--
+
+CREATE TABLE `user_cart` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_profile`
+--
+
+CREATE TABLE `user_profile` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `mobile_no` varchar(15) NOT NULL,
+  `house_no` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `pin_code` int(11) NOT NULL,
+  `address_type` varchar(255) NOT NULL,
+  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user_profile`
+--
+
+INSERT INTO `user_profile` (`id`, `user_id`, `mobile_no`, `house_no`, `city`, `pin_code`, `address_type`, `added_on`) VALUES
+(1, 1, '08767286769', '25', 'shahada', 425444, '', '2021-07-10 18:50:44');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `about_us`
+--
+ALTER TABLE `about_us`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `admin`
@@ -340,6 +425,18 @@ ALTER TABLE `delivery_boy`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `order_master`
+--
+ALTER TABLE `order_master`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_status`
+--
+ALTER TABLE `order_status`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
@@ -364,8 +461,26 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_cart`
+--
+ALTER TABLE `user_cart`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user_profile`
+--
+ALTER TABLE `user_profile`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `about_us`
+--
+ALTER TABLE `about_us`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -395,7 +510,7 @@ ALTER TABLE `contact_us`
 -- AUTO_INCREMENT for table `coupon_code`
 --
 ALTER TABLE `coupon_code`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `delivery_boy`
@@ -404,16 +519,28 @@ ALTER TABLE `delivery_boy`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `order_master`
+--
+ALTER TABLE `order_master`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `order_status`
+--
+ALTER TABLE `order_status`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `product_detailes`
 --
 ALTER TABLE `product_detailes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `sub_category`
@@ -425,6 +552,18 @@ ALTER TABLE `sub_category`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `user_cart`
+--
+ALTER TABLE `user_cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `user_profile`
+--
+ALTER TABLE `user_profile`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 

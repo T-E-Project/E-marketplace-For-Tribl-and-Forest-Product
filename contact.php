@@ -1,7 +1,25 @@
 <?php
     include 'includes/navigation_bar.php';
-    if(!isset($_SESSION['USER_LOGIN'])){
-        header('Location:login.php?type=msg&page=Contact');
+    include('smtp/PHPMailerAutoload.php');
+
+    $name ='';
+    $email ='';
+    $subject ='';
+    $meassage ='';
+
+    if(isset($_POST['submit'])){
+        $name = get_safe_value($_POST['name']);
+        $email = get_safe_value($_POST['email']);
+        $subject = get_safe_value($_POST['subject']);
+        $meassage = get_safe_value($_POST['message']);
+        
+        mysqli_query($con,"INSERT INTO contact_us(name,email,subject,meassage) VALUES('$name','$email','$subject','$meassage')");
+        $html="<p><b>Thank You $name </b> ! <br> for connecting with us, Will get back to you shortly.</p>";
+        send_email($email,$html,'Contact~E-marketplace');
+        echo "<script>
+                alert(`Thank You $name for connecting with us, Will get back to you shortly !`);
+            </script>"; 
+        redirect('index');
     }
 ?>
 

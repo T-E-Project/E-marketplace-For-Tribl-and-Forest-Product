@@ -36,9 +36,12 @@
             </div>
             <div class="col-xl-3">
                 <h3>Make Mony With Us</h3>
-                <ul class="d-flex">
+                <ul class="d-flex footer_help">
                     <li>
-                        <a href="<?php echo WEBSITE_PATH; ?>admin/registration.php"><span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></span> Sell Your Product</a>
+                        <a href="<?php echo WEBSITE_PATH; ?>admin/admin_registration"><span> <i class="fa fa-shopping-bag" aria-hidden="true"></i></span> Sell Your Product</a>
+                    </li>
+                    <li>
+                        <a href="<?php echo WEBSITE_PATH; ?>delivery_boy/login"><span>  <i class="fa fa-motorcycle" aria-hidden="true"></i></span> Delivery Boy Login</a>
                     </li>
                 </ul>
             </div>
@@ -46,10 +49,10 @@
                 <h3>Let Us Help You</h3>
                 <ul class="d-flex footer_help">
                     <li>
-                        <a href="<?php echo WEBSITE_PATH; ?>whether.php">Current Whether Information.</a>
+                        <a href="<?php echo WEBSITE_PATH; ?>whether">Current Whether Information.</a>
                     </li>
                     <li>
-                        <a href="https://current-market-prices.netlify.app" target="_blank">Current Market Prices.</a>
+                        <a href="<?php echo WEBSITE_PATH; ?>prices">Current Market Prices.</a>
                     </li>
                     <li>
                         <a href="#">Any problem Selling With Us.</a>
@@ -66,7 +69,8 @@
         <!-- Developer Contact -->
             <div class="row developer">
                 <h3>&copy; 2021 ~ Tribal & Farmer, All Rights Reserved.</h3>
-                <p>Designed By ~ <a href="">Project Id ~ 17</a></p>
+                <p>Designed By ~ <a href="https://github.com/T-E-Project/T.E-Project" target="_blank"> <span><i class="fa fa-github" aria-hidden="true"></i></span> Project Id ~ 17 </a></p>
+                
             </div>
         <!-- Developer Contact -->
     </div>

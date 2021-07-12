@@ -1,6 +1,10 @@
 <?php 
 include('top.php');
 
+if($_SESSION['ADMIN_ROLE']=='0'){
+	redirect('product');
+}
+
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id']>0){
 	$type=get_safe_value($_GET['type']);
 	$id=get_safe_value($_GET['id']);
@@ -9,7 +13,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 		$oldImage = $res['image'];
 		mysqli_query($con,"DELETE FROM banner WHERE id='$id'");
 		unlink(SERVER_BANNER_IMAGE.$oldImage);
-		redirect('banner.php');
+		redirect('banner');
 	}
 	if($type=='active' || $type=='deactive'){
 		$status=1;
@@ -17,7 +21,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 			$status=0;
 		}
 		mysqli_query($con,"update banner set status='$status' where id='$id'");
-		redirect('banner.php');
+		redirect('banner');
 	}
 }
 
@@ -28,7 +32,7 @@ $res=mysqli_query($con,$sql);
   <div class="card">
             <div class="card-body">
               <h1 class="grid_title">Banner Master</h1>
-			  <a href="manage_banner.php" class="add_link">Add Banner</a>
+			  <a href="manage_banner" class="add_link">Add Banner</a>
               <div class="row grid_box">
 				
                 <div class="col-12">
@@ -58,7 +62,7 @@ $res=mysqli_query($con,$sql);
 							echo date('d-m-Y',$dateStr);
 							?></td>
 							<td>
-								<a href="manage_banner.php?id=<?php echo $row['id']?>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
+								<a href="manage_banner?id=<?php echo $row['id']?>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
 								<?php
 								if($row['status']==1){
 								?>

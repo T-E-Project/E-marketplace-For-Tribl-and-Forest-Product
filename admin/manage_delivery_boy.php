@@ -1,5 +1,8 @@
 <?php 
 include('top.php');
+if($_SESSION['ADMIN_ROLE']=='0'){
+	redirect('product');
+}
 $msg="";
 $name="";
 $mobile="";
@@ -35,7 +38,7 @@ if(isset($_POST['submit'])){
 			mysqli_query($con,"update delivery_boy set name='$name', password='$password' , mobile='$mobile' where id='$id'");
 		}
 		
-		redirect('delivery_boy.php');
+		redirect('delivery_boy');
 	}
 }
 ?>

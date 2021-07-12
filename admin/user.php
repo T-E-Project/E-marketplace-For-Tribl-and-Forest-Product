@@ -1,5 +1,8 @@
 <?php 
 include('top.php');
+if($_SESSION['ADMIN_ROLE']=='0'){
+	redirect('product');
+}
 
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id']>0){
 	$type=get_safe_value($_GET['type']);
@@ -10,7 +13,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 			$status=0;
 		}
 		mysqli_query($con,"update users set status='$status' where id='$id'");
-		redirect('user.php');
+		redirect('user');
 	}
 
 }

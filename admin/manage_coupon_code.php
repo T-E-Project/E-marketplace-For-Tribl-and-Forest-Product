@@ -1,5 +1,8 @@
 <?php 
 include('top.php');
+if($_SESSION['ADMIN_ROLE']=='0'){
+	redirect('product');
+}
 $msg="";
 $coupon_code="";
 $coupon_type="";
@@ -41,7 +44,7 @@ if(isset($_POST['submit'])){
 			mysqli_query($con,"update coupon_code set coupon_code='$coupon_code', coupon_type='$coupon_type' , coupon_value='$coupon_value', cart_min_value='$cart_min_value', expired_on='$expired_on' where id='$id'");
 		}
 		
-		redirect('coupon_code.php');
+		redirect('coupon_code');
 	}
 }
 ?>

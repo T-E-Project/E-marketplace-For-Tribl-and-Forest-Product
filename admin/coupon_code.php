@@ -1,12 +1,14 @@
 <?php 
 include('top.php');
-
+if($_SESSION['ADMIN_ROLE']=='0'){
+	redirect('product');
+}
 if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id']>0){
 	$type=get_safe_value($_GET['type']);
 	$id=get_safe_value($_GET['id']);
 	if($type=='delete'){
 		mysqli_query($con,"delete from coupon_code where id='$id'");
-		redirect('coupon_code.php');
+		redirect('coupon_code');
 	}
 	if($type=='active' || $type=='deactive'){
 		$status=1;
@@ -14,7 +16,7 @@ if(isset($_GET['type']) && $_GET['type']!=='' && isset($_GET['id']) && $_GET['id
 			$status=0;
 		}
 		mysqli_query($con,"update coupon_code set status='$status' where id='$id'");
-		redirect('coupon_code.php');
+		redirect('coupon_code');
 	}
 
 }
@@ -26,7 +28,7 @@ $res=mysqli_query($con,$sql);
   <div class="card">
             <div class="card-body">
               <h1 class="grid_title">Coupon Code Master</h1>
-			  <a href="manage_coupon_code.php" class="add_link">Add Coupon Code</a>
+			  <a href="manage_coupon_code" class="add_link">Add Coupon Code</a>
 			  <div class="row grid_box">
 				
                 <div class="col-12">
@@ -70,7 +72,7 @@ $res=mysqli_query($con,$sql);
 							?>
 							</td>
 							<td>
-								<a href="manage_coupon_code.php?id=<?php echo $row['id']?>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
+								<a href="manage_coupon_code?id=<?php echo $row['id']?>"><label class="badge badge-success hand_cursor">Edit</label></a>&nbsp;
 								<?php
 								if($row['status']==1){
 								?>
