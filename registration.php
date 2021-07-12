@@ -47,10 +47,10 @@
             <?php echo $msg; ?>
         <div class="row signup-form-body">
             <div class="col-xl-6">
-                <div class="social_register">
+                <!-- <div class="social_register">
                     <button class="btn"><span><i class="fa fa-google" aria-hidden="true"></i></span> &nbsp; SignUp With Google </button>
                     <p>OR</p>
-                </div>
+                </div> -->
                 <form method="post" action="">
                     <div class="form-input">
                         <input type="text" name="name" placeholder="Enter Your Full Name" required>

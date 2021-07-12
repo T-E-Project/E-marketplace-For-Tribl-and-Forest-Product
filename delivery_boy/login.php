@@ -49,11 +49,11 @@ if(isset($_POST['submit'])){
                   <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" placeholder="Password"  name="password" required>
                 </div>
                 <div class="mt-3">
-                  <input type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" value="SIGN IN" name="submit"/>
+                  <input type="submit" class="btn btn-block btn-success btn-lg font-weight-medium auth-form-btn" value="SIGN IN" name="submit"/>
                 </div>
                 
               </form>
-			  <div class="login_msg"><?php echo $msg?></div>
+			        <div class="login_msg"><?php echo $msg?></div>
             </div>
           </div>
         </div>

@@ -8,7 +8,6 @@
     require_once '../includes/database.inc.php';
     include_once("../includes/constant.inc.php");
     include '../includes/function.inc.php';
-    include('../smtp/PHPMailerAutoload.php');
     $username = '';
     $password ='';
     $msg = '';
@@ -91,10 +90,10 @@
         <?php echo $msg; ?>
         <div class="row signup-form-body">
             <div class="col-xl-6">
-                <div class="social_register">
+                <!-- <div class="social_register">
                     <button class="btn"><span><i class="fa fa-google" aria-hidden="true"></i></span> &nbsp; Login With Google </button>
                     <p>OR</p>
-                </div>
+                </div> -->
                 <form method="post" action="">
                     <div class="form-input">
                         <input type="text" name="username" placeholder="Enter Your Username" required>
@@ -102,6 +101,7 @@
                     <div class="form-input">
                         <input type="password" name="password" placeholder="Enter Your Password" required>
                     </div>
+                    <p class="m-0">Forgot Password?<a href="<?php echo WEBSITE_PATH; ?>admin/forgot_password"> Here</a>.</p>
                     <div class="form-input d-flex align-items-center flex-wrap">
                         <button type="submit" name="login">Login Now</button>
                         <p>You are Not Signup,Please <a href="<?php echo WEBSITE_PATH; ?>admin/admin_registration">signup Here</a>.</p>

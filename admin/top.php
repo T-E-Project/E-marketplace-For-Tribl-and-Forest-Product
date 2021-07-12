@@ -47,6 +47,9 @@ if($cur_path=='' || $cur_path=='index'){
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title><?php echo $page_title?></title>
+  <!-- Font Awsome Icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--X- Font Awsome Icon -X-->
   <!-- plugins:css -->
   <link rel="stylesheet" href="assets/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="assets/css/vendor.bundle.base.css">
@@ -108,28 +111,28 @@ if($cur_path=='' || $cur_path=='index'){
         <?php if($_SESSION['ADMIN_ROLE']!='0'){ ?>
           <li class="nav-item">
             <a class="nav-link" href="index">
-              <i class="mdi mdi-view-quilt menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
+            <i class="fa fa-dashcube" aria-hidden="true"></i>
+            <span class="menu-title">Dashboard</span>
             </a>
           </li>
           <?php } ?>
           <li class="nav-item">
             <a class="nav-link" href="product">
-              <i class="mdi mdi-view-headline menu-icon"></i>
+              <i class="fa fa-product-hunt" aria-hidden="true"></i>
               <span class="menu-title">Product</span>
             </a>
           </li>
           <?php if($_SESSION['ADMIN_ROLE']=='0'){ ?>
           <li class="nav-item">
             <a class="nav-link" href="orders_vendor">
-              <i class="mdi mdi-view-headline menu-icon"></i>
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
               <span class="menu-title">Orders</span>
             </a>
           </li>
             <?php }else{ ?>
           <li class="nav-item">
             <a class="nav-link" href="orders">
-              <i class="mdi mdi-view-headline menu-icon"></i>
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i>
               <span class="menu-title">Orders</span>
             </a>
           </li>
@@ -138,37 +141,37 @@ if($cur_path=='' || $cur_path=='index'){
           
           <li class="nav-item">
             <a class="nav-link" href="category">
-              <i class="mdi mdi-view-headline menu-icon"></i>
+              <i class="fa fa-copyright" aria-hidden="true"></i>&nbsp;
               <span class="menu-title">Category</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="sub_category">
-              <i class="mdi mdi-view-headline menu-icon"></i>
+              <i class="fa fa-copyright" aria-hidden="true"></i>&nbsp;
               <span class="menu-title">Sub Category</span>
             </a>
           </li>
 		      <li class="nav-item">
             <a class="nav-link" href="user">
-              <i class="mdi mdi-view-headline menu-icon "></i>
+              <i class="fa fa-users" aria-hidden="true"></i>&nbsp;
               <span class="menu-title">Users</span>
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="vendores">
-              <i class="mdi mdi-view-headline menu-icon "></i>
+              <i class="fa fa-handshake-o" aria-hidden="true"></i>
               <span class="menu-title">Vendors</span>
             </a>
           </li>
 		      <li class="nav-item">
             <a class="nav-link" href="delivery_boy">
-              <i class="mdi mdi-view-headline menu-icon"></i>
+              <i class="fa fa-motorcycle" aria-hidden="true"></i>
               <span class="menu-title">Delivery Boy</span>
             </a>
           </li>
 		      <li class="nav-item">
             <a class="nav-link" href="coupon_code">
-              <i class="mdi mdi-view-headline menu-icon"></i>
+              <i class="fa fa-btc" aria-hidden="true"></i>&nbsp;&nbsp;
               <span class="menu-title">Coupon Code</span>
             </a>
           </li>
@@ -177,21 +180,21 @@ if($cur_path=='' || $cur_path=='index'){
 		  
 		      <li class="nav-item">
             <a class="nav-link" href="banner">
-              <i class="mdi mdi-view-headline menu-icon"></i>
+              <i class="fa fa-sliders" aria-hidden="true"></i>&nbsp;&nbsp;
               <span class="menu-title">Banner</span>
             </a>
           </li>
 		  
 		      <li class="nav-item">
             <a class="nav-link" href="contact_us">
-              <i class="mdi mdi-view-headline menu-icon"></i>
+              <i class="fa fa-commenting-o" aria-hidden="true"></i>&nbsp;
               <span class="menu-title">Contact Us</span>
             </a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link" href="about_us">
-              <i class="mdi mdi-view-headline menu-icon"></i>
+              <i class="fa fa-info-circle" aria-hidden="true"></i>&nbsp;&nbsp;
               <span class="menu-title">About Us</span>
             </a>
           </li>

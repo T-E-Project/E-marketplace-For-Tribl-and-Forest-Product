@@ -32,6 +32,8 @@
         $page_title='Current Market Prices';
     }elseif($cur_path=='whether'){
         $page_title='Current Whether';
+    }elseif($cur_path=='forgot_password' || $cur_path=='update_password'){
+        $page_title='Forgot Password';
     }
 ?>
 <!DOCTYPE html>
