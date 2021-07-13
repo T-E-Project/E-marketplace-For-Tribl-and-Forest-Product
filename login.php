@@ -17,7 +17,7 @@
         $page = mysqli_escape_string($con,$_GET['page']);
         if($type=='msg'){
             $msg = "<script>
-                    alert(`Your Are Not Login Please Login Now For Access $page Products`);
+                    alert(`Your Are Not Login Please Login Now For Access $page`);
                 </script>"; 
         }
     }

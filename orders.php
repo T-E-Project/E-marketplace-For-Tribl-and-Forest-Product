@@ -1,5 +1,8 @@
 <?php
     include 'includes/navigation_bar.php';
+    if(!isset($_SESSION['USER_LOGIN'])){
+        header('Location:login?type=msg&page=Cart');
+    }
     $user_id = $_SESSION['USER_ID'];
     $sql = mysqli_query($con,"SELECT * FROM order_master WHERE user_id='$user_id'");
 ?>

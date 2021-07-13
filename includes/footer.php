@@ -55,7 +55,7 @@
                         <a href="<?php echo WEBSITE_PATH; ?>prices">Current Market Prices.</a>
                     </li>
                     <li>
-                        <a href="#">Any problem Selling With Us.</a>
+                        <a href="<?php echo WEBSITE_PATH; ?>chat">Any problem Selling With Us.</a>
                     </li>
                     <li>
                         <a href="#">Information About Platform.</a>

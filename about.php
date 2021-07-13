@@ -34,12 +34,12 @@
         <!-- Our Story -->
              <div class="row mt-5" id="subtitle">
                 <div class="col-xl-12">
-                    <h3>Our Story</h3>
+                    <h3>Our Team</h3>
                 </div>
             </div>
             <div class="row our_slider">
                 <div class="story_body" id="story_bg">
-                    <p><i class="fa fa-quote-left" aria-hidden="true"></i> This web app is very helpful for tribal and farmer. <i class="fa fa-quote-right" aria-hidden="true"></i></p>
+                    <p><i class="fa fa-quote-left" aria-hidden="true"></i> Class : TE<br> Div : B <br> Roll No:29 <br> SSBT's Collage Of Engenaring , Bambhaori Jalgaon. <i class="fa fa-quote-right" aria-hidden="true"></i></p>
                     <ul class="d-flex">
                         <li>
                             <i class="fa fa-star" aria-hidden="true"></i>
@@ -58,12 +58,12 @@
                         </li>
                     </ul>
                     <center>
-                        <img src="<?php echo WEBSITE_PATH; ?>assets/about/about_vission.png" alt="">
+                        <img src="<?php echo WEBSITE_PATH; ?>assets/team/pruthvi.jpg" alt="">
                     </center>
                     <h5>Pruthviraj Rajput</h5>
                 </div>
                 <div class="story_body">
-                    <p><i class="fa fa-quote-left" aria-hidden="true"></i> This web app is very helpful for tribal and farmer. <i class="fa fa-quote-right" aria-hidden="true"></i></p>
+                    <p><i class="fa fa-quote-left" aria-hidden="true"></i>  Class : TE<br> Div : B <br> Roll No:19 <br> SSBT's Collage Of Engenaring , Bambhaori Jalgaon. <i class="fa fa-quote-right" aria-hidden="true"></i></p>
                     <ul class="d-flex">
                         <li>
                             <i class="fa fa-star" aria-hidden="true"></i>
@@ -82,12 +82,12 @@
                         </li>
                     </ul>
                     <center>
-                        <img src="<?php echo WEBSITE_PATH; ?>assets/about/about_vission.png" alt="">
+                        <img src="<?php echo WEBSITE_PATH; ?>assets/team/rajesh.jpg" alt="">
                     </center>
-                    <h5>Pruthviraj Rajput</h5>
+                    <h5>Rajesh Patil</h5>
                 </div>
                 <div class="story_body">
-                    <p><i class="fa fa-quote-left" aria-hidden="true"></i> This web app is very helpful for tribal and farmer. <i class="fa fa-quote-right" aria-hidden="true"></i></p>
+                    <p><i class="fa fa-quote-left" aria-hidden="true"></i>  Class : TE<br> Div : A <br> Roll No:24 <br> SSBT's Collage Of Engenaring , Bambhaori Jalgaon.  <i class="fa fa-quote-right" aria-hidden="true"></i></p>
                     <ul class="d-flex">
                         <li>
                             <i class="fa fa-star" aria-hidden="true"></i>
@@ -106,12 +106,12 @@
                         </li>
                     </ul>
                     <center>
-                        <img src="<?php echo WEBSITE_PATH; ?>assets/about/about_vission.png" alt="">
+                        <img src="<?php echo WEBSITE_PATH; ?>assets/team/sumit.jpeg" alt="">
                     </center>
-                    <h5>Pruthviraj Rajput</h5>
+                    <h5>Sumit Choushan</h5>
                 </div>
                 <div class="story_body">
-                    <p><i class="fa fa-quote-left" aria-hidden="true"></i> This web app is very helpful for tribal and farmer. <i class="fa fa-quote-right" aria-hidden="true"></i></p>
+                    <p><i class="fa fa-quote-left" aria-hidden="true"></i>  Class : TE<br> Div : A <br> Roll No:01 <br> SSBT's Collage Of Engenaring , Bambhaori Jalgaon.  <i class="fa fa-quote-right" aria-hidden="true"></i></p>
                     <ul class="d-flex">
                         <li>
                             <i class="fa fa-star" aria-hidden="true"></i>
@@ -130,9 +130,33 @@
                         </li>
                     </ul>
                     <center>
-                        <img src="<?php echo WEBSITE_PATH; ?>assets/about/about_vission.png" alt="">
+                        <img src="<?php echo WEBSITE_PATH; ?>assets/team/swapnil.jpeg" alt="">
                     </center>
-                    <h5>Pruthviraj Rajput</h5>
+                    <h5>Swapnil Aamode</h5>
+                </div>
+                <div class="story_body">
+                    <p><i class="fa fa-quote-left" aria-hidden="true"></i>  Class : TE<br> Div : A <br> Roll No:03 <br> SSBT's Collage Of Engenaring , Bambhaori Jalgaon.  <i class="fa fa-quote-right" aria-hidden="true"></i></p>
+                    <ul class="d-flex">
+                        <li>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                        </li>
+                        <li>
+                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                        </li>
+                    </ul>
+                    <center>
+                        <img src="<?php echo WEBSITE_PATH; ?>assets/team/chetan.jpeg" alt="">
+                    </center>
+                    <h5>Chetan Badgujar</h5>
                 </div>
             </div>
         <!-- Our Story -->

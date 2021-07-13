@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 12, 2021 at 12:31 PM
+-- Generation Time: Jul 13, 2021 at 07:13 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 7.3.28
 
@@ -68,7 +68,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `email`, `username`, `password`, `roll`, `register_on`, `status`, `email_verification`) VALUES
-(1, 'Pruthviraj Rajput', 'pruthvirajrajput305@gmail.com', ' admin', '123', 1, '2021-07-12 08:25:13', 1, 1),
+(1, 'Pruthviraj Rajput', 'pruthvirajrajput305@gmail.com', ' admin', '7384', 1, '2021-07-12 12:50:14', 1, 1),
 (2, 'John Dev', 'prithvirajrajput575@gmail.com', ' vendor', '123', 0, '2021-07-12 08:50:09', 1, 1);
 
 -- --------------------------------------------------------
@@ -121,6 +121,30 @@ INSERT INTO `category` (`id`, `category`, `order_no`, `status`, `added_by`, `add
 (8, 'Home & Living ', 4, 1, ' Pruthviraj Dineshsing Rajput', '2021-07-07 04:25:49'),
 (10, 'craft', 6, 1, ' Pruthviraj Dineshsing Rajput', '2021-07-07 00:29:54'),
 (11, 'Forest Products ', 1, 1, ' Pruthviraj Dineshsing Rajput', '2021-07-07 09:39:15');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chat`
+--
+
+CREATE TABLE `chat` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `message` varchar(500) NOT NULL,
+  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `chat`
+--
+
+INSERT INTO `chat` (`id`, `user_id`, `message`, `added_on`) VALUES
+(1, 1, 'Hi Everyone !', '2021-07-13 03:42:57'),
+(2, 2, 'hi', '2021-07-13 03:49:14'),
+(3, 2, 'Hi How Are You ?', '2021-07-13 03:50:50'),
+(4, 1, 'hi', '2021-07-13 03:51:43'),
+(5, 2, 'Hello', '2021-07-13 03:52:34');
 
 -- --------------------------------------------------------
 
@@ -194,13 +218,6 @@ CREATE TABLE `order_master` (
   `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `order_master`
---
-
-INSERT INTO `order_master` (`id`, `user_id`, `product_id`, `qty`, `total_price`, `payment_status`, `delivery_boy_id`, `status`, `added_on`) VALUES
-(1, 1, 6, 1, 80, 1, 1, 'On the Way', '2021-07-12 10:15:27');
-
 -- --------------------------------------------------------
 
 --
@@ -211,16 +228,6 @@ CREATE TABLE `order_status` (
   `id` int(11) NOT NULL,
   `order_status` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `order_status`
---
-
-INSERT INTO `order_status` (`id`, `order_status`) VALUES
-(1, 'Pending'),
-(2, 'Despatch '),
-(3, 'On the Way'),
-(4, 'Delivered');
 
 -- --------------------------------------------------------
 
@@ -338,7 +345,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `username`, `password`, `resister_on`, `status`, `email_verification`) VALUES
-(1, ' John Dev', 'pruthviraj.rajput011@gmail.com', ' user', 'd064bf1ad039ff366564f352226e7640', '2021-07-10 18:48:45', 1, 1);
+(1, ' Pruthviraj Rajput', 'prithvirajrajput575@gmail.com', ' user', '202cb962ac59075b964b07152d234b70', '2021-07-13 03:42:03', 1, 1),
+(2, ' Gaurav  Pawar', 'pruthviraj.rajput011@gmail.com', ' pruthvi', '202cb962ac59075b964b07152d234b70', '2021-07-13 03:48:36', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -376,7 +384,8 @@ CREATE TABLE `user_profile` (
 --
 
 INSERT INTO `user_profile` (`id`, `user_id`, `mobile_no`, `house_no`, `city`, `pin_code`, `address_type`, `added_on`) VALUES
-(1, 1, '08767286769', '25', 'shahada', 425444, '', '2021-07-10 18:50:44');
+(1, 1, '', '', '', 0, '', '2021-07-13 03:41:17'),
+(2, 2, '', '', '', 0, '', '2021-07-13 03:48:09');
 
 --
 -- Indexes for dumped tables
@@ -404,6 +413,12 @@ ALTER TABLE `banner`
 -- Indexes for table `category`
 --
 ALTER TABLE `category`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `chat`
+--
+ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -501,6 +516,12 @@ ALTER TABLE `category`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
+-- AUTO_INCREMENT for table `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `contact_us`
 --
 ALTER TABLE `contact_us`
@@ -522,13 +543,13 @@ ALTER TABLE `delivery_boy`
 -- AUTO_INCREMENT for table `order_master`
 --
 ALTER TABLE `order_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `order_status`
 --
 ALTER TABLE `order_status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -552,7 +573,7 @@ ALTER TABLE `sub_category`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_cart`
@@ -564,7 +585,7 @@ ALTER TABLE `user_cart`
 -- AUTO_INCREMENT for table `user_profile`
 --
 ALTER TABLE `user_profile`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

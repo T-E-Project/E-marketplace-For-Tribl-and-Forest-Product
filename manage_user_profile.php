@@ -1,5 +1,8 @@
 <?php
     include 'includes/navigation_bar.php';
+    if(!isset($_SESSION['USER_LOGIN'])){
+        header('Location:login?type=msg&page=Cart');
+    }
     $type ='';
     $name = '';
     $email = '';
