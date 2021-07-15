@@ -9,7 +9,7 @@ if(!isset($_SESSION['DELIVERY_BOY_USER_LOGIN'])){
 
 if(isset($_GET['id']) && $_GET['id']>0){
   $order_id = get_safe_value($_GET['id']);
-  mysqli_query($con,"UPDATE order_master SET 	status='Deliverd' WHERE id='$order_id'");
+  mysqli_query($con,"UPDATE order_master SET 	status='Delivered' WHERE id='$order_id'");
 }
 
 

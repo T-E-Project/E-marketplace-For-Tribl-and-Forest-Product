@@ -153,7 +153,7 @@ if(isset($_POST['update'])){
 
     mysqli_query($con,"UPDATE users SET name='$name' WHERE id='$user_id'");
     mysqli_query($con,"UPDATE user_profile SET mobile_no='$mobile_no',house_no='$house_no',city='$city',pin_code='$pin_code',address_type='$address_type' WHERE user_id='$user_id'");
-    mysqli_query($con,"INSERT INTO order_master(user_id,product_id,qty,total_price,payment_status,delivery_boy_id,status) VALUES('$user_id','$product_id','$qunty','$cart_total','0','0','Panding')");
+    mysqli_query($con,"INSERT INTO order_master(user_id,product_id,qty,total_price,payment_status,delivery_boy_id,status) VALUES('$user_id','$product_id','$qunty','$cart_total','0','0','Pending')");
     $insert_id=mysqli_insert_id($con);
 	$_SESSION['ORDER_ID']=$insert_id;
     $order_id =$_SESSION['ORDER_ID'];
