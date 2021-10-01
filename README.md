@@ -62,16 +62,6 @@ Site Screen Shorts
 Website Screen Short
 ----
 
-Login Page 
-
-<img src="https://github.com/pruthvi7384/Secreate-Diary-App/blob/master/output/img1.png">
-
-Added Diary Topic List
-
-<img src="https://github.com/pruthvi7384/Secreate-Diary-App/blob/master/output/img3.png">
-
-Edit Diary Topic Containt and View
-
-<img src="https://github.com/pruthvi7384/Secreate-Diary-App/blob/master/output/img4.png">
+<img src="https://github.com/T-E-Project/E-marketplace-For-Tribl-and-Forest-Product/blob/master/TE.png">
 
 ### THANK YOU !!!
