@@ -1,26 +1,60 @@
 # Secreate Diary App
-## [Website Demo](https://secretdiary.emarket.infinityfreeapp.com/login.php)
+## [Website Demo](https://emarket.infinityfreeapp.com/)
+## [Admin Panal Demo](https://emarket.infinityfreeapp.com/admin/admin_login)
 
-I have Create Full Stack Web application using HTML, CSS used Front End Purpose and php used backend connectivity and database used MySql also deployed using infinity-free.
+    Admin Panal Login Cradntial
+    
+    username => `admin`
+    
+    password => `admin`
+    
+## [Delivery Boy Panal Demo](https://emarket.infinityfreeapp.com/delivery_boy/login)
+    
+    Admin Panal Login Cradntial
+    
+    username => `7720993937`
+    
+    password => `123`
+
+Our Team Create E-market place for tribal and forest products using HTML , CSS , Bootstrap, php. and used mysqli database. this wbsite is multivender website like flipcart, amazone.
 
 --------
 ## Technology Used
 
-#### 1. `HTML`
-#### 2. `CSS` 
-#### 3. `Java Script`
-#### 4. `php`
-#### 5. `MySQL Database`
+### Front End
+
+    #### 1. `HTML`
+    #### 2. `CSS` 
+    #### 3. `Java Script`
+    
+### Back End
+    #### 4. `php`
+    
+### Database  
+
+    #### 5. `MySQL Database`
+   
+### Fream Work  
+
+    #### 5. `Boostrap`
+    
+## Contributor
+    
+   #### 1. Pruthviraj Rajput
+   #### 2. Sumit Chouhan
+   #### 3. Rajesh Patil
+   #### 4. Chetan Badgujar 
+   #### 5. Swapnil Aamode
 
 ## Step to Setup
 
 #### 1. Install a Xampp Server and start it. [install xampp server](https://www.apachefriends.org/index.html)
 #### 2. open the `htdocs` folder and create your own folder `like your name` then open `CMD` and type command =>
-    git clone https://github.com/pruthvi7384/Secreate-Diary-App.git
-#### 3. Create Database Table `diary` and import form `Database_Table`=> `diary.sql`
+    git clone https://github.com/T-E-Project/E-marketplace-For-Tribl-and-Forest-Product.git
+#### 3. Create Database Table `tribal_website` and import file `diary.sql`
 #### 4. After Sussesful Clone open in Text Editor
 #### 5. Finaly Open The Browser and type `localhost`
-#### 6. Your Website Sussesfuly Runing In `LocalHost`
+#### 6. Your Website Sussesfuly Runing In `localHost`
 
 Site Screen Shorts 
 -----
