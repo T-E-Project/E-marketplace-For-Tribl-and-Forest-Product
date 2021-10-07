@@ -29,15 +29,15 @@ Our Team Create E-market place for tribal and forest products using HTML , CSS ,
     
 ### Back End
 
-#### 4. `php`
+#### 1. `php`
     
 ### Database  
 
-#### 5. `MySQL Database`
+#### 1. `MySQL Database`
    
 ### Fream Work  
 
-#### 5. `Boostrap`
+#### 1. `Boostrap`
     
 ## Contributor
     
