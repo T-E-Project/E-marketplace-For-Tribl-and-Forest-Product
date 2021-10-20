@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 13, 2021 at 07:13 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 7.3.28
+-- Host: sql103.byetcluster.com
+-- Generation Time: Oct 20, 2021 at 07:07 AM
+-- Server version: 5.7.35-38
+-- PHP Version: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `tribal_website`
+-- Database: `epiz_30107281_emart`
 --
 
 -- --------------------------------------------------------
@@ -33,7 +34,7 @@ CREATE TABLE `about_us` (
   `heading` varchar(255) NOT NULL,
   `message` text NOT NULL,
   `order_number` int(11) NOT NULL,
-  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -58,7 +59,7 @@ CREATE TABLE `admin` (
   `username` varchar(100) NOT NULL,
   `password` varchar(10) NOT NULL,
   `roll` tinyint(4) NOT NULL,
-  `register_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `register_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` tinyint(4) NOT NULL,
   `email_verification` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -83,7 +84,7 @@ CREATE TABLE `banner` (
   `heading` varchar(255) NOT NULL,
   `order_number` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL,
-  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -91,11 +92,11 @@ CREATE TABLE `banner` (
 --
 
 INSERT INTO `banner` (`id`, `image`, `heading`, `order_number`, `status`, `added_on`) VALUES
-(5, '403972810_img1.jpg', 'banner1', 1, 1, '2021-07-07 08:19:44'),
-(6, '120431227_img2.jpg', 'banner2', 2, 1, '2021-07-07 08:19:54'),
-(7, '716562554_img3.jpg', 'banner3', 3, 1, '2021-07-07 08:19:55'),
-(8, '709907756_img4.jpg', 'banner4', 4, 1, '2021-07-07 08:19:57'),
-(9, '617816256_img5.jpg', 'banner5', 5, 1, '2021-07-07 03:15:34');
+(5, '390622529_img1.jpg', 'banner1', 1, 1, '2021-10-20 10:02:15'),
+(6, '276716646_img2.jpg', 'banner2', 2, 1, '2021-10-20 10:02:27'),
+(7, '675558984_img3.jpg', 'banner3', 3, 1, '2021-10-20 10:02:36'),
+(8, '899752015_img4.jpg', 'banner4', 4, 1, '2021-10-20 10:02:46'),
+(9, '203073880_img5.jpg', 'banner5', 5, 1, '2021-10-20 10:02:56');
 
 -- --------------------------------------------------------
 
@@ -109,7 +110,7 @@ CREATE TABLE `category` (
   `order_no` int(11) NOT NULL,
   `status` tinyint(11) NOT NULL,
   `added_by` varchar(255) NOT NULL,
-  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -132,7 +133,7 @@ CREATE TABLE `chat` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `message` varchar(500) NOT NULL,
-  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -158,7 +159,7 @@ CREATE TABLE `contact_us` (
   `email` varchar(255) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `meassage` varchar(255) NOT NULL,
-  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -175,7 +176,7 @@ CREATE TABLE `coupon_code` (
   `cart_min_value` int(11) NOT NULL,
   `expired_on` date NOT NULL,
   `status` tinyint(4) NOT NULL,
-  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -190,7 +191,7 @@ CREATE TABLE `delivery_boy` (
   `mobile` varchar(15) NOT NULL,
   `password` varchar(15) NOT NULL,
   `status` tinyint(4) NOT NULL,
-  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -215,7 +216,7 @@ CREATE TABLE `order_master` (
   `payment_status` tinyint(4) NOT NULL,
   `delivery_boy_id` int(11) NOT NULL,
   `status` varchar(255) NOT NULL,
-  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -245,7 +246,7 @@ CREATE TABLE `product` (
   `type` enum('tribal','forest') NOT NULL,
   `added_by` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL,
-  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -253,15 +254,11 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `category_id`, `sub_category_id`, `product`, `product_detail`, `image`, `type`, `added_by`, `status`, `added_on`) VALUES
-(1, 11, 22, 'Fresho Onion', 'Onion is a vegetable which is almost like a staple in Indian food. This is also known to be one of the essential ingredients of raw salads. They come in different colours like white, red or yellow and are quite in demand in cold salads and hot soups.', '836839366_v1.jpg', 'forest', 0, 1, '2021-07-10 13:34:36'),
-(2, 11, 22, 'Fresho Potato', 'Consumption of potatoes helps to maintain the blood glucose level and keeps the brain alert and active.', '287282088_v2.jpg', 'forest', 0, 1, '2021-07-10 13:34:29'),
-(3, 11, 22, 'Fresho Capsicum', 'Leaving a moderately pungent taste on the tongue, Green capsicums, also known as green peppers are bell shaped, medium-sized fruit pods.', '966445796_v4.jpg', 'forest', 0, 1, '2021-07-09 22:05:47'),
-(4, 11, 23, 'Fresho Banana ', 'Tiny and small sized, this variety is called Yelakki in Bangalore and Elaichi in Mumbai. Despite its small size, they are naturally flavoured, aromatic and sweeter compared to regular bananas.', '120683152_f1.jpg', 'forest', 0, 1, '2021-07-09 22:06:49'),
-(5, 11, 23, 'Fresho Orange', 'Navel oranges are very sugary and juicy and considered to be the world\'s finest orange for fresh consumption because they are very sweet, naturally juice, seedless and peels and segments very easily. It has a variety of phytochemicals containing flavanoids hesperetin, beta-carotene and carotenoids alpha etc. It is wealthy in Vitamin C, A and Folate and includes small amounts of Vitamin E & B complex vitamins too.', '889674852_f2.jpg', 'forest', 0, 1, '2021-07-09 22:07:35'),
-(6, 11, 23, 'Fresho Mallika Mango', 'Being a hybrid of Neelum and Dasheri, Mallika has a perfect blend of sweetness and tartness.', '841456236_f3.jpg', 'forest', 2, 1, '2021-07-12 10:13:22'),
-(7, 8, 19, 'Hand Crafted FAN', 'The folk and tribal arts of India are very ethnic and simple, and yet colorful and vibrant enough to speak volumes about the countries rich heritage.', '581194153_d1.jpg', 'tribal', 0, 1, '2021-07-09 22:09:45'),
-(8, 10, 21, 'Dry Fruit Box', 'Nicely Crafted Work To Keep Dry Fruits With Good Quality Wood.', '501331193_w1.jpg', 'tribal', 0, 1, '2021-07-09 22:10:38'),
-(10, 7, 15, 'Bhil Black & White Paper Painting', 'Each Tribes India Bhil painting is appealing to the visual senses. The bhil paintings intelligently use natural materials like neem twigs, turmeric and leaves.', '126270583_pb1.jpg', 'tribal', 2, 1, '2021-07-12 06:01:38');
+(1, 11, 23, 'tomato', 'Tomato Is Best Product', '937347129_v3.jpg', 'tribal', 1, 1, '2021-10-20 09:55:00'),
+(2, 11, 21, 'DRY FRUIT BOX', 'Nicely Crafted Work To Keep Dry Fruits With Good Quality Wood.', '541004910_w1.jpg', 'tribal', 1, 1, '2021-10-20 10:00:40'),
+(3, 8, 19, 'HAND CRAFTED FAN', 'The folk and tribal arts of India are very ethnic and simple, and yet colorful and vibrant enough to speak volumes about the countries rich heritage.', '233380271_d1.jpg', 'tribal', 1, 1, '2021-10-20 10:05:39'),
+(5, 11, 23, 'FRESHO MOSAMBI', 'Fresh Mosambis are of the best quality, handpicked and sourced directly from the farmers of Anantapur. Sweet lime or mosambi is lime-like, large-sized with an underlying yellow base. The intense, refreshing aroma is due to the essential oils present in its skin. It generally tastes sweet, occasionally tart to sweet. Enriched with Vitamin C, protein and fiber, it provides a range of health benefits. You can even make Juice from this fruit.', '525683987_f5.jpg', 'forest', 1, 1, '2021-10-20 10:08:04'),
+(6, 11, 23, 'FRESHO MALLIKA MANGO', 'Being a hybrid of Neelum and Dasher, Mallika has a perfect blend of sweetness and tartness.', '236044887_f3.jpg', 'forest', 1, 1, '2021-10-20 10:08:57');
 
 -- --------------------------------------------------------
 
@@ -275,7 +272,7 @@ CREATE TABLE `product_detailes` (
   `attribute` varchar(100) NOT NULL,
   `price` int(11) NOT NULL,
   `status` tinyint(4) NOT NULL,
-  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -286,12 +283,14 @@ INSERT INTO `product_detailes` (`id`, `product_id`, `attribute`, `price`, `statu
 (1, 1, '1 kg', 30, 1, '2021-07-09 22:02:21'),
 (2, 2, '1 kg', 20, 1, '2021-07-09 22:03:16'),
 (3, 3, '1 kg', 50, 1, '2021-07-09 22:05:47'),
-(4, 4, '1 kg', 30, 1, '2021-07-09 22:06:49'),
 (5, 5, '1 kg', 20, 1, '2021-07-09 22:07:35'),
-(6, 6, '1 kg', 80, 1, '2021-07-09 22:08:27'),
 (7, 7, 'Per Item ', 250, 1, '2021-07-09 22:09:45'),
 (8, 8, 'Per Item ', 400, 1, '2021-07-09 22:10:38'),
-(10, 10, 'Per Item ', 200, 1, '2021-07-12 06:01:38');
+(11, 1, '1kg', 20, 1, '2021-10-20 09:55:00'),
+(12, 2, 'Per Item', 500, 1, '2021-10-20 10:00:40'),
+(13, 3, 'Per Item', 410, 1, '2021-10-20 10:05:39'),
+(15, 5, '1kg', 20, 1, '2021-10-20 10:08:04'),
+(16, 6, '1kg', 80, 1, '2021-10-20 10:08:57');
 
 -- --------------------------------------------------------
 
@@ -304,7 +303,7 @@ CREATE TABLE `sub_category` (
   `category` varchar(255) NOT NULL,
   `sub_category` varchar(255) NOT NULL,
   `added_by` varchar(255) NOT NULL,
-  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -335,7 +334,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `resister_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `resister_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `status` tinyint(4) NOT NULL,
   `email_verification` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -359,7 +358,7 @@ CREATE TABLE `user_cart` (
   `user_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
-  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -376,7 +375,7 @@ CREATE TABLE `user_profile` (
   `city` varchar(255) NOT NULL,
   `pin_code` int(11) NOT NULL,
   `address_type` varchar(255) NOT NULL,
-  `added_on` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -555,13 +554,13 @@ ALTER TABLE `order_status`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `product_detailes`
 --
 ALTER TABLE `product_detailes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `sub_category`
