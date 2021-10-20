@@ -1,6 +1,6 @@
 # E-Marketplace For Tribal and Forest Products
-## [Website Demo](https://emarket.infinityfreeapp.com/)
-## [Admin Panal Demo](https://emarket.infinityfreeapp.com/admin/admin_login)
+## [Website Demo](http://emartplace.infinityfreeapp.com/)
+## [Admin Panal Demo](http://emartplace.infinityfreeapp.com/admin/admin_login)
 
 Admin Panal Login Cradntial
 
@@ -8,7 +8,7 @@ username => `admin`
 
 password => `admin`
     
-## [Delivery Boy Panal Demo](https://emarket.infinityfreeapp.com/delivery_boy/login)
+## [Delivery Boy Panal Demo](http://emartplace.infinityfreeapp.com/delivery_boy/login)
     
 Admin Panal Login Cradntial
 
