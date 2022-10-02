@@ -52,7 +52,7 @@ Our Team Create E-market place for tribal and forest products using HTML , CSS ,
 #### 1. Install a Xampp Server and start it. [install xampp server](https://www.apachefriends.org/index.html)
 #### 2. open the `htdocs` folder and create your own folder `like your name` then open `CMD` and type command =>
     git clone https://github.com/T-E-Project/E-marketplace-For-Tribl-and-Forest-Product.git
-#### 3. Create Database Table `tribal_website` and import file `diary.sql`
+#### 3. Create Database Table `tribal_website` and import file `tribal-website.sql`
 #### 4. After Sussesful Clone open in Text Editor
 #### 5. Finaly Open The Browser and type `localhost`
 #### 6. Your Website Sussesfuly Runing In `localHost`
